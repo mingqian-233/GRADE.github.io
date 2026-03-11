@@ -652,8 +652,27 @@
       border-radius: var(--radius-md);
       overflow: hidden;
       border: 1px solid var(--border-light);
-      background: #f8fafc;
+      background: #f0f2f5;
       cursor: zoom-in;
+      min-height: 200px;
+    }
+    .image-panel .img-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(90deg, #f0f2f5 25%, #e4e8ed 37%, #f0f2f5 63%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s ease-in-out infinite;
+      z-index: 1;
+      transition: opacity 0.3s ease;
+    }
+    .image-panel .img-wrapper.loaded::before {
+      opacity: 0;
+      pointer-events: none;
+    }
+    @keyframes shimmer {
+      0% { background-position: 100% 0; }
+      100% { background-position: -100% 0; }
     }
     .image-panel .img-wrapper img {
       display: block;
@@ -661,7 +680,11 @@
       height: auto;
       max-height: 420px;
       object-fit: contain;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0;
+      transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .image-panel .img-wrapper.loaded img {
+      opacity: 1;
     }
     .image-panel .img-wrapper:hover img {
       transform: scale(1.03);
@@ -1138,6 +1161,12 @@ async function loadSamples() {
   renderDisciplineNav();
   const first = disciplineOrder.find(d => samplesData[d]);
   if (first) selectDiscipline(first);
+  // Background preload all remaining disciplines
+  setTimeout(() => {
+    disciplineOrder.forEach(name => {
+      if (samplesData[name]) preloadDisciplineImages(name);
+    });
+  }, 500);
 }
 
 function renderDisciplineNav() {
@@ -1155,11 +1184,31 @@ function renderDisciplineNav() {
   });
 }
 
+// Image preload cache
+const preloadedImages = new Set();
+
+function preloadDisciplineImages(name) {
+  const d = samplesData[name];
+  if (!d) return;
+  Object.values(d.taxonomies).forEach(sample => {
+    [sample.input_img, sample.gt_img].forEach(imgPath => {
+      const src = `./static/images/${imgPath}`;
+      if (!preloadedImages.has(src)) {
+        preloadedImages.add(src);
+        const img = new Image();
+        img.src = src;
+      }
+    });
+  });
+}
+
 function selectDiscipline(name) {
   currentDiscipline = name;
   document.querySelectorAll('.discipline-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.discipline === name);
   });
+  // Preload all images for this discipline
+  preloadDisciplineImages(name);
   const d = samplesData[name];
   const nav = document.getElementById('taxonomy-nav');
   nav.innerHTML = '';
@@ -1218,14 +1267,14 @@ function renderSample(discipline, taxonomy) {
         <div class="image-compare">
           <div class="image-panel input-panel">
             <span class="panel-label"><i class="fas fa-image"></i> Input Image</span>
-            <div class="img-wrapper" onclick="openModal('${inputSrc}')">
-              <img src="${inputSrc}" alt="Input" loading="lazy">
+            <div class="img-wrapper" id="input-wrapper" onclick="openModal('${inputSrc}')">
+              <img src="${inputSrc}" alt="Input" onload="this.parentElement.classList.add('loaded')">
             </div>
           </div>
           <div class="image-panel gt-panel">
             <span class="panel-label"><i class="fas fa-check-circle"></i> Ground Truth</span>
-            <div class="img-wrapper" onclick="openModal('${gtSrc}')">
-              <img src="${gtSrc}" alt="Ground Truth" loading="lazy">
+            <div class="img-wrapper" id="gt-wrapper" onclick="openModal('${gtSrc}')">
+              <img src="${gtSrc}" alt="Ground Truth" onload="this.parentElement.classList.add('loaded')">
             </div>
           </div>
         </div>

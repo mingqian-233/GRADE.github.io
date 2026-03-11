@@ -7,8 +7,8 @@
       "2D Geometry": {
         "task_id": "math_math_3",
         "text": "Mark the length of arc QR in the figure. Accurate to two decimal places.",
-        "input_img": "samples/math_math_3_input.png",
-        "gt_img": "samples/math_math_3_gt.jpeg",
+        "input_img": "samples/math_math_3_input.jpg",
+        "gt_img": "samples/math_math_3_gt.jpg",
         "consistency": "Localized",
         "questions": [
           {
@@ -18,18 +18,8 @@
           },
           {
             "id": "Q2",
-            "question": "Does the arc-length annotation appear as a decimal number rounded to two decimal places?",
-            "score": 0.2
-          },
-          {
-            "id": "Q3",
-            "question": "Given radius r = 15 and central angle QPR = 120°, does the annotated value satisfy s = r * (120° in radians) = 15 * (2π/3)?",
-            "score": 0.35
-          },
-          {
-            "id": "Q4",
-            "question": "Is the annotated arc length equal to 31.42 when rounded to the nearest hundredth?",
-            "score": 0.25
+            "question": "Does the QR arc-length annotation exactly 31.42?",
+            "score": 0.8
           }
         ]
       },
@@ -73,83 +63,88 @@
         ]
       },
       "Functions": {
-        "task_id": "math_math_94",
-        "text": "Draw the derivative graph of the function in the figure. Keep all the other elements unchanged.",
-        "input_img": "samples/math_math_94_input.png",
-        "gt_img": "samples/math_math_94_gt.png",
+        "task_id": "math_math_99",
+        "text": "Draw the zeros of the function in the figure.",
+        "input_img": "samples/math_math_99_input.png",
+        "gt_img": "samples/math_math_99_gt.png",
         "consistency": "Localized",
         "questions": [
           {
             "id": "Q1",
-            "question": "Is a new curve added on the same coordinate axes to represent the derivative of the given function, with the original graph still present?",
-            "score": 0.1
+            "question": "Are points drawn exactly at every x-value where the graphed function intersects the x-axis (y = 0)?",
+            "score": 0.35
           },
           {
             "id": "Q2",
-            "question": "At each local maximum of the original function, does the derivative cross the x-axis with a change of sign from positive to negative at the corresponding x-value?",
+            "question": "Is each drawn zero located on the x-axis (y = 0)?",
             "score": 0.2
           },
           {
             "id": "Q3",
-            "question": "At each local minimum of the original function, does the derivative cross the x-axis with a change of sign from negative to positive at the corresponding x-value?",
-            "score": 0.2
-          },
-          {
-            "id": "Q4",
-            "question": "On every interval where the original function is increasing, is the derivative plotted above the x-axis on those x-values?",
+            "question": "Does the number of drawn points equal the number of distinct x-axis intersections of the function?",
             "score": 0.25
           },
           {
-            "id": "Q5",
-            "question": "On every interval where the original function is decreasing, is the derivative plotted below the x-axis on those x-values?",
-            "score": 0.2
+            "id": "Q4",
+            "question": "Are there no drawn points at x-values where the function does not equal zero?",
+            "score": 0.15
           },
           {
-            "id": "Q6",
-            "question": "Do regions where the original function is steeper in magnitude correspond to the derivative having larger absolute values than in flatter regions?",
+            "id": "Q5",
+            "question": "Are the zeros indicated as localized points (not extended marks) centered on the intersection locations?",
             "score": 0.05
           }
         ]
       },
       "Statistics": {
-        "task_id": "math_math_114",
-        "text": "Transform the scatter plot of a perfect positive correlation into a perfect negative correlation, keeping the axes unchanged.",
-        "input_img": "samples/math_math_114_input.png",
-        "gt_img": "samples/math_math_114_gt.png",
+        "task_id": "math_static_5",
+        "text": "Transform the probability density function (pdf) curve of the uniform distribution into the cumulative distribution function (cdf) curve",
+        "input_img": "samples/math_static_5_input.png",
+        "gt_img": "samples/math_static_5_gt.png",
         "consistency": "Style",
         "questions": [
           {
             "id": "Q1",
-            "question": "Are the x- and y-axes retained unchanged in orientation and placement compared to the original (same two axes with the same arrow directions)?",
-            "score": 0.15
+            "question": "Is the plotted curve a single-valued, nondecreasing function of x (never decreases anywhere)?",
+            "score": 0.16
           },
           {
             "id": "Q2",
-            "question": "Are the data shown as discrete scatter points (markers) rather than a connected line?",
-            "score": 0.15
+            "question": "Does the curve take the constant value 0 for all x less than some finite lower bound a?",
+            "score": 0.16
           },
           {
             "id": "Q3",
-            "question": "Do the points lie exactly on a single straight line, indicating a perfect correlation (no dispersion off the line)?",
-            "score": 0.25
+            "question": "Between two finite bounds a and b, does the curve increase linearly with constant slope (a straight-line ramp)?",
+            "score": 0.2
           },
           {
             "id": "Q4",
-            "question": "Is the straight line formed by the points negatively sloped (y decreases as x increases)?",
-            "score": 0.25
+            "question": "At and beyond some upper bound b, does the curve reach and remain at the constant value 1 for x > b?",
+            "score": 0.16
           },
           {
             "id": "Q5",
-            "question": "Do the points span from the upper-left region to the lower-right region of the plot, consistent with a perfect negative correlation?",
-            "score": 0.2
+            "question": "Is the function continuous at both bounds a and b (no jump discontinuities at the start or end of the ramp)?",
+            "score": 0.12
+          },
+          {
+            "id": "Q6",
+            "question": "Does the ramp between a and b span a nonzero horizontal distance (i.e., b − a > 0)?",
+            "score": 0.1
+          },
+          {
+            "id": "Q7",
+            "question": "Are the minimum and maximum values of the curve 0 and 1, respectively (the curve stays within [0, 1])?",
+            "score": 0.1
           }
         ]
       },
       "Graph Theory": {
         "task_id": "math_math_122",
         "text": "From the graph shown in the image with vertices a, b, c, d, e, f, construct the subgraph on the vertex set {b, c, d, e} by removing vertices a and f and all edges incident to them.",
-        "input_img": "samples/math_math_122_input.png",
-        "gt_img": "samples/math_math_122_gt.png",
+        "input_img": "samples/math_math_122_input.jpg",
+        "gt_img": "samples/math_math_122_gt.jpg",
         "consistency": "Localized",
         "questions": [
           {
@@ -207,127 +202,102 @@
     "order": 1,
     "taxonomies": {
       "Mechanics": {
-        "task_id": "physics_task_2",
-        "text": "According to the information in the picture, draw a force analysis diagram of the small ball.",
-        "input_img": "samples/physics_task_2_input.JPEG",
-        "gt_img": "samples/physics_task_2_gt.JPEG",
+        "task_id": "physics_task_56",
+        "text": "In the Torricelli experiment diagram, adjust the heights of the water and alcohol columns to accurately reflect their physical states under a standard atmospheric pressure of 101.3 kPa, given that at 20°C the saturated vapor pressure and density are 2.3 kPa and 1000 kg/m³ for water and 5.9 kPa and 790 kg/m³ for alcohol.",
+        "input_img": "samples/physics_task_56_input.jpg",
+        "gt_img": "samples/physics_task_56_gt.jpg",
         "consistency": "Localized",
         "questions": [
           {
             "id": "Q1",
-            "question": "Is a gravity force on the ball shown as a vertical downward arrow acting on the ball?",
-            "score": 0.18
+            "question": "Is the alcohol column shown higher than the water column, consistent with h = (Patm − Pvap)/(ρg) using the given properties?",
+            "score": 0.5
           },
           {
             "id": "Q2",
-            "question": "Is a normal force shown as a horizontal arrow pointing away from the wall (to the right)?",
-            "score": 0.22
+            "question": "Is the alcohol height depicted to be about 20–25% greater than the water height (ha ≈ 1.22 hw)?",
+            "score": 0.3
           },
           {
             "id": "Q3",
-            "question": "Is a normal force shown pointing perpendicular to the plane, away from the surface (up-left for an upward-right incline)?",
-            "score": 0.28
-          },
-          {
-            "id": "Q4",
-            "question": "Does the wall’s normal force direction align with the line through the ball’s center toward the wall contact point (i.e., perpendicular to the wall)?",
-            "score": 0.12
-          },
-          {
-            "id": "Q5",
-            "question": "Do all force arrows originate from the ball (from its center or contact region), indicating forces acting on the ball?",
-            "score": 0.1
-          },
-          {
-            "id": "Q6",
-            "question": "Does the inclined-plane normal force direction pass through the ball’s center (i.e., along the radius to the contact, perpendicular to the plane)?",
-            "score": 0.1
+            "question": "Are both columns shown standing above their reservoirs (positive column heights relative to the free surfaces), consistent with standard atmospheric support?",
+            "score": 0.2
           }
         ]
       },
       "Optics": {
-        "task_id": "physics_task_12",
-        "text": "According to the information of the incident ray, angle of incidence, interface and normal line in the figure, draw the reflected ray and mark the angle of reflection.",
-        "input_img": "samples/physics_task_12_input.JPEG",
-        "gt_img": "samples/physics_task_12_gt.JPEG",
+        "task_id": "physics_task_14",
+        "text": "It is known that the angle between the incident ray and the reflected ray is 90°, please draw the positions of the normal line and the mirror surface.",
+        "input_img": "samples/physics_task_14_input.jpg",
+        "gt_img": "samples/physics_task_14_gt.jpg",
         "consistency": "Localized",
         "questions": [
           {
             "id": "Q1",
-            "question": "Is a reflected ray drawn starting exactly from the point of incidence O on the interface?",
-            "score": 0.15
-          },
-          {
-            "id": "Q2",
-            "question": "Is the reflected ray located on the opposite side of the normal N from the incident ray?",
-            "score": 0.15
-          },
-          {
-            "id": "Q3",
-            "question": "Does the reflected ray make an angle with the normal that is equal to the incident angle (law of reflection)?",
-            "score": 0.3
-          },
-          {
-            "id": "Q4",
-            "question": "Is the angle of reflection explicitly marked between the reflected ray and the normal (not with the surface)?",
-            "score": 0.15
-          },
-          {
-            "id": "Q5",
-            "question": "Is the marked angle of reflection 60°, matching the given 60° angle of incidence?",
-            "score": 0.15
-          },
-          {
-            "id": "Q6",
-            "question": "Is the reflected ray drawn with an arrow pointing away from O (outgoing from the surface)?",
-            "score": 0.1
-          }
-        ]
-      },
-      "Electromagnetism": {
-        "task_id": "physics_task_42",
-        "text": "Redraw the circuit by performing a source transformation on the power supply section, replacing the series combination of the DC battery, switch $S$, and resistor $R_1$ with its equivalent Norton circuit consisting of a current source $I_s$ in parallel with resistor $R_1$.",
-        "input_img": "samples/physics_task_42_input.JPEG",
-        "gt_img": "samples/physics_task_42_gt.JPEG",
-        "consistency": "Localized",
-        "questions": [
-          {
-            "id": "Q1",
-            "question": "Is a current source present in the power-supply position where the battery and switch used to be?",
+            "question": "Is a straight mirror surface line added that passes through the vertex where the two rays meet?",
             "score": 0.18
           },
           {
             "id": "Q2",
-            "question": "Is the current source explicitly labeled as Is (semantic equivalents accepted)?",
-            "score": 0.12
+            "question": "Is a normal line drawn that passes through the same point of incidence on the mirror surface?",
+            "score": 0.18
           },
           {
             "id": "Q3",
-            "question": "Is resistor R1 still included in the circuit after the transformation?",
-            "score": 0.1
+            "question": "Is the normal line perpendicular (90°) to the mirror surface line?",
+            "score": 0.22
           },
           {
             "id": "Q4",
-            "question": "Are the current source Is and resistor R1 connected in parallel, sharing the same top and bottom nodes?",
-            "score": 0.3
+            "question": "Does the normal line bisect the angle between the incident and reflected rays (equal angles to both rays)?",
+            "score": 0.26
           },
           {
             "id": "Q5",
-            "question": "Have the DC battery symbol and switch S been removed (i.e., not present anywhere in the redrawn circuit)?",
+            "question": "Are both the incident and reflected rays on the same side of the mirror surface (not crossing to the far side)?",
+            "score": 0.16
+          }
+        ]
+      },
+      "Electromagnetism": {
+        "task_id": "physics_task_33",
+        "text": "What will happen if the two balls carry the same charges? Please draw it in the figure.",
+        "input_img": "samples/physics_task_33_input.jpg",
+        "gt_img": "samples/physics_task_33_gt.jpg",
+        "consistency": "Localized",
+        "questions": [
+          {
+            "id": "Q1",
+            "question": "Are the two balls depicted with a clear gap between them, indicating separation due to like-charge repulsion?",
             "score": 0.2
           },
           {
-            "id": "Q6",
-            "question": "Are all other circuit elements (V, A, R2, and the wiper P) remained the same nodes as before, with no elements being added or deleted?",
-            "score": 0.1
+            "id": "Q2",
+            "question": "Is the left ball displaced laterally to the left, away from the right ball (not toward it)?",
+            "score": 0.2
+          },
+          {
+            "id": "Q3",
+            "question": "Is the right ball displaced laterally to the right, away from the left ball (not toward it)?",
+            "score": 0.2
+          },
+          {
+            "id": "Q4",
+            "question": "Do both supporting strings tilt outward from the vertical (away from each other), consistent with repulsive electrostatic force?",
+            "score": 0.25
+          },
+          {
+            "id": "Q5",
+            "question": "Are both balls still shown hanging from their strings (attached to the top supports), rather than detached or in contact with the supports?",
+            "score": 0.15
           }
         ]
       },
       "Thermodynamics": {
         "task_id": "physics_task_45",
         "text": "Edit the lake stratification diagram by replacing labels $t_1$ through $t_5$ with appropriate integer temperatures in degrees Celsius, reflecting the steady-state thermal distribution under a layer of ice at an air temperature of -7°C, based on the anomalous density-temperature relationship of water from the ice-water interface down to the bottom where water reaches its maximum density.",
-        "input_img": "samples/physics_task_45_input.JPEG",
-        "gt_img": "samples/physics_task_45_gt.JPEG",
+        "input_img": "samples/physics_task_45_input.jpg",
+        "gt_img": "samples/physics_task_45_gt.jpg",
         "consistency": "Localized",
         "questions": [
           {
@@ -363,41 +333,46 @@
         ]
       },
       "Engineering Drawing": {
-        "task_id": "engineering_task_1",
-        "text": "Draw the three views of this part.",
-        "input_img": "samples/engineering_task_1_input.JPEG",
-        "gt_img": "samples/engineering_task_1_gt.JPEG",
-        "consistency": "Style",
+        "task_id": "engineering_task_7",
+        "text": "According to the following views, draw the oblique two-dimensional view in the blank space at the bottom right.",
+        "input_img": "samples/engineering_task_7_input.JPEG",
+        "gt_img": "samples/engineering_task_7_gt.JPEG",
+        "consistency": "Localized",
         "questions": [
           {
             "id": "Q1",
-            "question": "Are three orthographic views (front, top, and side) present for the part?",
-            "score": 0.15
+            "question": "Is there an added oblique 3D-like view drawn in the previously blank bottom-right area?",
+            "score": 0.12
           },
           {
             "id": "Q2",
-            "question": "In the front view, is the outer profile a semicircular arch sitting on a rectangular base?",
-            "score": 0.2
+            "question": "In the oblique view, are all depth (receding) edges parallel to each other, indicating a consistent oblique projection?",
+            "score": 0.12
           },
           {
             "id": "Q3",
-            "question": "In the front view, is a circular through-hole shown centered within the arch?",
-            "score": 0.2
+            "question": "Does the left side of the object show a slanted side face (a parallelogram) receding toward the back-left from the front face?",
+            "score": 0.12
           },
           {
             "id": "Q4",
-            "question": "In the side view, does the part appear as a vertical rectangular web on a rectangular base (a T-shaped silhouette)?",
-            "score": 0.2
+            "question": "Does the right side also show a receding side face in the same direction as the left side (parallel receding edges)?",
+            "score": 0.12
           },
           {
             "id": "Q5",
-            "question": "In the top view, is the footprint of the base shown as a rectangle wider than the upper web?",
-            "score": 0.15
+            "question": "Does the front show a central rectangular portion that protrudes forward relative to recessed left and right portions (a T/U-shaped front profile)?",
+            "score": 0.18
           },
           {
             "id": "Q6",
-            "question": "In the top view, are two parallel longitudinal edges or bands indicating the upper web/uprights shown within the base rectangle?",
-            "score": 0.1
+            "question": "Is there an inclined front face represented by a diagonal edge sloping downward to the right on the left-front portion, matching the diagonal indicated in the orthographic view?",
+            "score": 0.18
+          },
+          {
+            "id": "Q7",
+            "question": "Is a top face visible with a step/discontinuity showing different heights between the central protrusion and the adjacent right portion?",
+            "score": 0.16
           }
         ]
       }
@@ -408,158 +383,225 @@
     "icon": "🧪",
     "order": 2,
     "taxonomies": {
-      "GHS Pictogram": {
-        "task_id": "chemistry_task_9",
-        "text": "This is the pictogram for GHS02. Please draw the pictogram for GHS06 to the right of this diagram.",
-        "input_img": "samples/chemistry_task_9_input.png",
-        "gt_img": "samples/chemistry_task_9_gt.png",
-        "consistency": "Style",
-        "questions": [
-          {
-            "id": "Q1",
-            "question": "Is the original GHS02 pictogram still present on the left?",
-            "score": 0.1
-          },
-          {
-            "id": "Q2",
-            "question": "Is a second pictogram added to the right of the original?",
-            "score": 0.2
-          },
-          {
-            "id": "Q3",
-            "question": "Does the added right-side pictogram depict the GHS06 symbol (a skull with crossed bones)?",
-            "score": 0.4
-          },
-          {
-            "id": "Q4",
-            "question": "Is the added GHS06 symbol presented within a hazard pictogram diamond frame?",
-            "score": 0.2
-          },
-          {
-            "id": "Q5",
-            "question": "Are the left and right pictograms clearly separate without overlapping each other?",
-            "score": 0.1
-          }
-        ]
-      },
-      "Laboratory Techniques": {
-        "task_id": "chemistry_task_28",
-        "text": "Please use the tools provided in the image to assemble the correct setup for \"heating liquid in a test tube using an alcohol lamp\".",
-        "input_img": "samples/chemistry_task_28_input.png",
-        "gt_img": "samples/chemistry_task_28_gt.png",
+      "Atomic Periodic": {
+        "task_id": "chemistry_task_8",
+        "text": "This is a portion of the periodic table. Please complete the missing element information in the bottom-right corner of the diagram.",
+        "input_img": "samples/chemistry_task_8_input.png",
+        "gt_img": "samples/chemistry_task_8_gt.png",
         "consistency": "Localized",
         "questions": [
           {
             "id": "Q1",
-            "question": "Is the test tube being held with a test tube holder or tongs rather than by hand?",
-            "score": 0.09
-          },
-          {
-            "id": "Q2",
-            "question": "Is the alcohol lamp lit with a visible flame for heating?",
-            "score": 0.09
-          },
-          {
-            "id": "Q3",
-            "question": "Is the lower end of the test tube positioned above the alcohol lamp flame for heating?",
-            "score": 0.12
-          },
-          {
-            "id": "Q4",
-            "question": "Is the test tube held at an angle rather than vertically upright while heating?",
-            "score": 0.09
-          },
-          {
-            "id": "Q5",
-            "question": "Is the open mouth of the test tube oriented upward and away from the flame (not directed into the flame)?",
-            "score": 0.12
-          },
-          {
-            "id": "Q6",
-            "question": "Is there a clear gap between the test tube and the flame (the tube not touching the flame)?",
-            "score": 0.09
-          },
-          {
-            "id": "Q7",
-            "question": "Does the test tube contain liquid to be heated?",
+            "question": "Is the previously blank bottom-right cell now filled with an element entry?",
             "score": 0.1
           },
           {
-            "id": "Q8",
-            "question": "Is the liquid volume in the test tube no more than about one-third of the tube’s capacity?",
-            "score": 0.12
-          },
-          {
-            "id": "Q9",
-            "question": "Is the holder clamping the test tube near its upper part rather than near the bottom where heating occurs?",
-            "score": 0.1
-          },
-          {
-            "id": "Q10",
-            "question": "Is the test tube mouth unobstructed (no stopper or cap) during heating?",
-            "score": 0.08
-          }
-        ]
-      },
-      "Structural Transformation": {
-        "task_id": "chemistry_task_32",
-        "text": "Based on the space-filling model of ethanol, please draw the space-filling model of dimethyl ether.",
-        "input_img": "samples/chemistry_task_32_input.png",
-        "gt_img": "samples/chemistry_task_32_gt.png",
-        "consistency": "Style",
-        "questions": [
-          {
-            "id": "Q1",
-            "question": "Is the molecule depicted using a space-filling (van der Waals spheres) representation rather than ball-and-stick?",
-            "score": 0.12
-          },
-          {
             "id": "Q2",
-            "question": "Does the structure show a single oxygen atom bonded to two carbon atoms (forming a C–O–C ether linkage)?",
-            "score": 0.24
+            "question": "Does the bottom-right element entry show the atomic number 20?",
+            "score": 0.25
           },
           {
             "id": "Q3",
-            "question": "Is the oxygen atom not bonded to any hydrogen (i.e., no O–H group present)?",
-            "score": 0.18
+            "question": "Does the bottom-right element entry display the symbol \"Ca\"?",
+            "score": 0.3
           },
           {
             "id": "Q4",
-            "question": "Are there exactly two carbon atoms in the molecule?",
-            "score": 0.16
-          },
-          {
-            "id": "Q5",
-            "question": "Does each carbon represent a methyl group, with three hydrogens attached to each carbon?",
+            "question": "Does the bottom-right element entry include the name \"Calcium\"?",
             "score": 0.2
           },
           {
-            "id": "Q6",
-            "question": "Is the total number of hydrogens six, consistent with dimethyl ether (C2H6O)?",
-            "score": 0.1
+            "id": "Q5",
+            "question": "Does the bottom-right element entry list an atomic mass of 40.078?",
+            "score": 0.15
           }
         ]
       },
-      "Gas Laws": {
-        "task_id": "chemistry_task_36",
-        "text": "The diagram shows the Pressure-Temperature (P–T) relationship curves for Ar and He in the same 2 L container.\nGiven that at T = 400 K, the pressure of Ar is 3.0 atm and the pressure of He is 2.0 atm, please determine which curve represents Ar and which represents He. Label the right end of each curve with the corresponding gas name (Ar or He).",
-        "input_img": "samples/chemistry_task_36_input.png",
-        "gt_img": "samples/chemistry_task_36_gt.png",
+      "Inorganic Lab": {
+        "task_id": "chemistry_task_4",
+        "text": "The distillation setup in the diagram is incomplete. Please complete the setup by adding the necessary equipment and label their names.",
+        "input_img": "samples/chemistry_task_4_input.png",
+        "gt_img": "samples/chemistry_task_4_gt.png",
         "consistency": "Localized",
         "questions": [
           {
             "id": "Q1",
-            "question": "Is the curve that has higher pressure at T = 400 K labeled \"Ar\" at its right end?",
-            "score": 0.45
+            "question": "Is a thermometer added to the distillation setup at the neck/distillation head of the boiling flask to complete the apparatus?",
+            "score": 0.5
           },
           {
             "id": "Q2",
-            "question": "Is the curve that has lower pressure at T = 400 K labeled \"He\" at its right end?",
-            "score": 0.45
+            "question": "Is the added thermometer labeled with the text \"温度计\" near it?",
+            "score": 0.3
           },
           {
             "id": "Q3",
-            "question": "Are the labels \"Ar\" and \"He\" placed at the right ends of their respective curves?",
+            "question": "Is the thermometer’s sensing bulb positioned in the vapor path just before the condenser (not immersed in the liquid in the flask), consistent with proper distillation practice?",
+            "score": 0.2
+          }
+        ]
+      },
+      "Organic Structure": {
+        "task_id": "chemistry_task_64",
+        "text": "Starting from the structure in the image, generate its enantiomer by inverting the configuration at the single stereocenter while keeping the carbon skeleton, bond lengths, and angles unchanged.",
+        "input_img": "samples/chemistry_task_64_input.jpg",
+        "gt_img": "samples/chemistry_task_64_gt.jpg",
+        "consistency": "Style",
+        "questions": [
+          {
+            "id": "Q1",
+            "question": "Is the carbon skeleton connectivity identical to the original (same carbons and branching, no atoms/bonds added or removed)?",
+            "score": 0.2
+          },
+          {
+            "id": "Q2",
+            "question": "Is the single stereocenter located at the same carbon as in the original structure?",
+            "score": 0.1
+          },
+          {
+            "id": "Q3",
+            "question": "Is the configuration at the stereocenter inverted relative to the original (the bond shown as a solid wedge becomes dashed and the bond shown as dashed becomes a solid wedge for that center)?",
+            "score": 0.45
+          },
+          {
+            "id": "Q4",
+            "question": "Are the substituents at the stereocenter the same as in the original, specifically Br and Cl labeled correctly?",
+            "score": 0.1
+          },
+          {
+            "id": "Q5",
+            "question": "Are the bond angles of the carbon skeleton kept unchanged compared to the original drawing?",
+            "score": 0.075
+          },
+          {
+            "id": "Q6",
+            "question": "Are the bond lengths of the carbon skeleton kept unchanged compared to the original drawing?",
+            "score": 0.075
+          }
+        ]
+      },
+      "Organic Mechanism": {
+        "task_id": "chemistry_task_66",
+        "text": "Starting from the benzylic carbocation, perform a resonance transformation: shift a pair of π electrons from the adjacent aromatic C=C bond into the benzylic C–C bond, and relocate the positive charge onto the ring carbon conjugated to the benzylic position. Draw the final product image.",
+        "input_img": "samples/chemistry_task_66_input.jpg",
+        "gt_img": "samples/chemistry_task_66_gt.jpg",
+        "consistency": "Style",
+        "questions": [
+          {
+            "id": "Q1",
+            "question": "After the resonance edit, is there a C=C double bond between the benzylic carbon and the directly attached aromatic ring carbon?",
+            "score": 0.25
+          },
+          {
+            "id": "Q2",
+            "question": "Has the positive charge been relocated from the benzylic carbon onto a ring carbon that is conjugated (adjacent) to the benzylic position?",
+            "score": 0.25
+          },
+          {
+            "id": "Q3",
+            "question": "Did the specific aromatic C=C bond adjacent to the benzylic position, which donates the π electrons, become a single C–C bond after the shift?",
+            "score": 0.2
+          },
+          {
+            "id": "Q4",
+            "question": "Is the benzylic carbon shown as neutral (no + sign) after the electron shift?",
+            "score": 0.15
+          },
+          {
+            "id": "Q5",
+            "question": "Are two hydrogens still bonded to the benzylic carbon (CH2) consistent with forming the new double bond to the ring?",
+            "score": 0.15
+          }
+        ]
+      },
+      "Physical Chemistry": {
+        "task_id": "chemistry_task_24",
+        "text": "This is a schematic diagram showing the state of the electrolytic cell before the reaction begins. Please label the main products near the left electrode and the right electrode respectively.",
+        "input_img": "samples/chemistry_task_24_input.png",
+        "gt_img": "samples/chemistry_task_24_gt.png",
+        "consistency": "Localized",
+        "questions": [
+          {
+            "id": "Q1",
+            "question": "Is the main product at the left (negative) electrode labeled as Zn (zinc metal deposition)?",
+            "score": 0.5
+          },
+          {
+            "id": "Q2",
+            "question": "Is the main product at the right (positive) electrode labeled as O2 (oxygen gas evolution)?",
+            "score": 0.5
+          }
+        ]
+      },
+      "Organic Redox": {
+        "task_id": "chemistry_task_87",
+        "text": "From the question_image, perform complete catalytic hydrogenation of the aromatic ring. Draw the final product image.",
+        "input_img": "samples/chemistry_task_87_input.png",
+        "gt_img": "samples/chemistry_task_87_gt.png",
+        "consistency": "Style",
+        "questions": [
+          {
+            "id": "Q1",
+            "question": "Is the aromatic ring converted to a saturated cyclohexane ring (six-membered with only single bonds)?",
+            "score": 0.35
+          },
+          {
+            "id": "Q2",
+            "question": "Are all double bonds originally in the benzene ring removed (no C=C remaining in the ring)?",
+            "score": 0.25
+          },
+          {
+            "id": "Q3",
+            "question": "Is the NH2 substituent retained in the product (unchanged as a primary amine)?",
+            "score": 0.2
+          },
+          {
+            "id": "Q4",
+            "question": "Does the ring remain six carbons long after hydrogenation (a six-membered ring)?",
+            "score": 0.1
+          },
+          {
+            "id": "Q5",
+            "question": "Is the NH2 group still attached to a ring carbon via a single bond (forming cyclohexylamine)?",
+            "score": 0.1
+          }
+        ]
+      },
+      "Organic Acid": {
+        "task_id": "chemistry_task_2",
+        "text": "The reaction equation for the esterification of ethanol and acetic acid is shown in the diagram. Please complete the product section of the equation.",
+        "input_img": "samples/chemistry_task_2_input.png",
+        "gt_img": "samples/chemistry_task_2_gt.png",
+        "consistency": "Localized",
+        "questions": [
+          {
+            "id": "Q1",
+            "question": "Is the product on the right side shown as an ester rather than a carboxylic acid or alcohol?",
+            "score": 0.15
+          },
+          {
+            "id": "Q2",
+            "question": "Does the ester correspond to ethyl acetate, i.e., an acetyl group (CH3CO–) bonded through oxygen to an ethyl group (–OCH2CH3)?",
+            "score": 0.35
+          },
+          {
+            "id": "Q3",
+            "question": "Is water (H2O) included as a coproduct on the right side?",
+            "score": 0.2
+          },
+          {
+            "id": "Q4",
+            "question": "Is a carbonyl (C=O) present in the ester product structure on the right side?",
+            "score": 0.1
+          },
+          {
+            "id": "Q5",
+            "question": "Is the ethyl group attached to the acyl fragment via an oxygen atom (–COO–CH2CH3), not directly to the carbonyl carbon?",
+            "score": 0.1
+          },
+          {
+            "id": "Q6",
+            "question": "Are exactly one ester molecule and one water molecule shown as products (no extra products)?",
             "score": 0.1
           }
         ]
@@ -571,169 +613,159 @@
     "icon": "🧬",
     "order": 3,
     "taxonomies": {
-      "Food Chain & Energy Flow": {
-        "task_id": "biology_task_10",
-        "text": "Please illustrate the food chain relationships among the five organisms in the diagram using arrows.",
-        "input_img": "samples/biology_task_10_input.png",
-        "gt_img": "samples/biology_task_10_gt.png",
+      "Ecology": {
+        "task_id": "biology_task_22",
+        "text": "This diagram shows the four stages of a butterfly's life cycle. Please connect the illustrations of each stage in the correct order using arrows.",
+        "input_img": "samples/biology_task_22_input.png",
+        "gt_img": "samples/biology_task_22_gt.png",
         "consistency": "Style",
         "questions": [
           {
             "id": "Q1",
-            "question": "Are directional arrows used to indicate the food chain relationships among the organisms in the diagram?",
-            "score": 0.15
-          },
-          {
-            "id": "Q2",
-            "question": "Is there an arrow from the acorn to the squirrel, indicating the acorn is eaten by the squirrel?",
-            "score": 0.3
-          },
-          {
-            "id": "Q3",
-            "question": "Is there an arrow from the squirrel to the fox, indicating the fox preys on the squirrel?",
-            "score": 0.3
-          },
-          {
-            "id": "Q4",
-            "question": "Is there an arrow from the fox to the bear, indicating the bear is at a higher trophic level than the fox?",
+            "question": "Is there an arrow indicating progression from the stage labeled \"Eggs\" to the stage labeled \"Larva\"?",
             "score": 0.25
-          }
-        ]
-      },
-      "Cellular Metabolism": {
-        "task_id": "biology_task_11",
-        "text": "There is a type of respiratory reaction that occurs only in the cytoplasmic matrix, primarily in plant cells or yeast. Its reaction equation is shown in the figure below. Please complete the reaction products.",
-        "input_img": "samples/biology_task_11_input.png",
-        "gt_img": "samples/biology_task_11_gt.png",
-        "consistency": "Localized",
-        "questions": [
-          {
-            "id": "Q1",
-            "question": "Is ethanol written as C2H5OH included among the products to the right of the arrow?",
-            "score": 0.35
           },
           {
             "id": "Q2",
-            "question": "Is the stoichiometric coefficient 2 placed before C2H5OH among the products?",
+            "question": "Is there an arrow indicating progression from the stage labeled \"Larva\" to the stage labeled \"Pupa\"?",
             "score": 0.25
           },
           {
             "id": "Q3",
-            "question": "Is carbon dioxide shown among the products with the coefficient 2 (written as 2CO2)?",
-            "score": 0.2
+            "question": "Is there an arrow indicating progression from the stage labeled \"Pupa\" to the stage labeled \"butterfly\"?",
+            "score": 0.25
           },
           {
             "id": "Q4",
-            "question": "Is the release of a small amount of energy indicated among the products (e.g., text '少量能量' or equivalent)?",
-            "score": 0.1
-          },
-          {
-            "id": "Q5",
-            "question": "Is glucose written as C6H12O6 shown as the reactant on the left side of the arrow?",
-            "score": 0.1
+            "question": "Do the arrows form a single continuous sequence covering all four stages exactly once in the order Eggs → Larva → Pupa → butterfly, with no contradictory extra arrows?",
+            "score": 0.25
           }
         ]
       },
-      "Endocytosis & Exocytosis": {
-        "task_id": "biology_task_28",
-        "text": "Please draw a schematic diagram of the exocytosis process based on the illustration of endocytosis shown in the diagram.",
-        "input_img": "samples/biology_task_28_input.png",
-        "gt_img": "samples/biology_task_28_gt.png",
+      "Cell Biology": {
+        "task_id": "biology_task_34",
+        "text": "Mitosis is divided into four stages: prophase, metaphase, anaphase, and telophase. Based on the provided prophase diagram, please complete the schematic illustrations for the subsequent three stages.",
+        "input_img": "samples/biology_task_34_input.jpg",
+        "gt_img": "samples/biology_task_34_gt.jpg",
         "consistency": "Style",
         "questions": [
           {
             "id": "Q1",
-            "question": "Does the diagram depict exocytosis with a vesicle starting inside the cell and approaching the inner face of the plasma membrane?",
-            "score": 0.15
+            "question": "Does the result include three additional stage panels beyond the given prophase, specifically for metaphase, anaphase, and telophase?",
+            "score": 0.2
           },
           {
             "id": "Q2",
-            "question": "Is a docking step shown where the vesicle contacts the cytosolic side of the plasma membrane before fusion?",
-            "score": 0.1
+            "question": "In the metaphase panel, are all duplicated chromosomes aligned along a single central metaphase plate within one cell?",
+            "score": 0.2
           },
           {
             "id": "Q3",
-            "question": "Is membrane fusion illustrated (vesicle membrane becoming continuous with the plasma membrane) rather than an inward invagination?",
-            "score": 0.2
+            "question": "In the metaphase panel, do chromosomes remain duplicated (X-shaped) rather than already separated into single chromatids?",
+            "score": 0.1
           },
           {
             "id": "Q4",
-            "question": "Is a fusion pore/opening to the extracellular space depicted during the fusion event?",
-            "score": 0.15
-          },
-          {
-            "id": "Q5",
-            "question": "Is cargo shown moving outward through the fusion pore to the extracellular side?",
+            "question": "In the anaphase panel, are sister chromatids clearly separated from each chromosome and moving toward opposite poles?",
             "score": 0.2
           },
           {
+            "id": "Q5",
+            "question": "In the anaphase panel, is the chromatid movement bilateral (toward both poles) rather than to only one side?",
+            "score": 0.1
+          },
+          {
             "id": "Q6",
-            "question": "Do directional arrows indicate outward movement (from cytosol to exterior) throughout the sequence?",
+            "question": "In the telophase panel, are chromosomes depicted as unduplicated (single rods) rather than X-shaped?",
             "score": 0.1
           },
           {
             "id": "Q7",
-            "question": "In the final step, is the cargo outside the cell and the vesicle membrane integrated into or flattened with the plasma membrane (no separate internal vesicle remains)?",
+            "question": "Does each telophase nucleus contain the same number of chromosomes as the prophase cell (chromosome number conserved)?",
             "score": 0.1
           }
         ]
       },
-      "Central Dogma": {
-        "task_id": "biology_task_40",
-        "text": "Please complete the content of the Central Dogma in the diagram.",
-        "input_img": "samples/biology_task_40_input.png",
-        "gt_img": "samples/biology_task_40_gt.png",
+      "Human Physiology": {
+        "task_id": "biology_task_18",
+        "text": "Please use several white arrows to indicate the direction of blood circulation within the blood vessels and heart structures in the diagram.",
+        "input_img": "samples/biology_task_18_input.png",
+        "gt_img": "samples/biology_task_18_gt.png",
         "consistency": "Localized",
         "questions": [
           {
             "id": "Q1",
-            "question": "Is the leftmost blank filled with the label DNA?",
+            "question": "Is there at least one white arrow inside the aorta indicating blood flow away from the heart?",
             "score": 0.15
           },
           {
             "id": "Q2",
-            "question": "Is the middle blank filled with the label RNA?",
-            "score": 0.15
+            "question": "Is a white arrow shown in the systemic arterial segment indicating flow away from the heart toward the systemic capillary beds?",
+            "score": 0.12
           },
           {
             "id": "Q3",
-            "question": "Is the rightmost blank filled with the label Protein?",
+            "question": "Is a white arrow shown in the systemic veins/vena cava indicating flow toward the heart?",
             "score": 0.15
           },
           {
             "id": "Q4",
-            "question": "Does the arrow labeled Transcription point from DNA to RNA?",
-            "score": 0.1
+            "question": "Is a white arrow present in the pulmonary artery indicating flow from the right ventricle toward the lungs?",
+            "score": 0.15
           },
           {
             "id": "Q5",
-            "question": "Does the arrow labeled Reverse Transcription point from RNA to DNA?",
-            "score": 0.1
+            "question": "Is a white arrow present in the pulmonary veins indicating flow from the lungs toward the left atrium?",
+            "score": 0.15
           },
           {
             "id": "Q6",
-            "question": "Does the arrow labeled Translation point from RNA to Protein?",
-            "score": 0.1
+            "question": "Are white arrows drawn within the heart structures to show venous inflow (to right heart) and arterial outflow (from left heart) consistent with normal circulation?",
+            "score": 0.18
           },
           {
             "id": "Q7",
-            "question": "Does the arrow labeled Reverse Translation point from Protein to RNA?",
+            "question": "Are the white arrows placed inside the vessel lumens/heart structures rather than outside the anatomy or on labels?",
             "score": 0.1
+          }
+        ]
+      },
+      "Molecular Biology": {
+        "task_id": "biology_task_38",
+        "text": "Please complete the base pairing for the DNA double-stranded structure shown in the diagram.",
+        "input_img": "samples/biology_task_38_input.png",
+        "gt_img": "samples/biology_task_38_gt.png",
+        "consistency": "Localized",
+        "questions": [
+          {
+            "id": "Q1",
+            "question": "Are all previously blank rungs filled so that each position across the ladder has a nucleotide letter?",
+            "score": 0.12
           },
           {
-            "id": "Q8",
-            "question": "Is the replication loop adjacent to DNA labeled DNA Replication?",
-            "score": 0.05
+            "id": "Q2",
+            "question": "For every A on one strand, is a T placed opposite it?",
+            "score": 0.2
           },
           {
-            "id": "Q9",
-            "question": "Is the replication loop adjacent to RNA labeled RNA Replication?",
-            "score": 0.05
+            "id": "Q3",
+            "question": "For every T on one strand, is an A placed opposite it?",
+            "score": 0.2
           },
           {
-            "id": "Q10",
-            "question": "Is the replication loop adjacent to Protein labeled Protein Replication?",
-            "score": 0.05
+            "id": "Q4",
+            "question": "For every G on one strand, is a C placed opposite it?",
+            "score": 0.2
+          },
+          {
+            "id": "Q5",
+            "question": "For every C on one strand, is a G placed opposite it?",
+            "score": 0.2
+          },
+          {
+            "id": "Q6",
+            "question": "Are there no base pairs other than A–T or G–C anywhere in the completed structure?",
+            "score": 0.08
           }
         ]
       }
@@ -744,130 +776,267 @@
     "icon": "💻",
     "order": 4,
     "taxonomies": {
-      "Singly Linked List": {
-        "task_id": "ComputerScience_task_3",
-        "text": "This is a doubly linked list. Please draw its corresponding singly linked list form.",
-        "input_img": "samples/ComputerScience_task_3_input.png",
-        "gt_img": "samples/ComputerScience_task_3_gt.png",
+      "Linear Structures": {
+        "task_id": "ComputerScience_task_2",
+        "text": "This is a singly linked list. Please draw the image after the linked list reversal operation.",
+        "input_img": "samples/ComputerScience_task_2_input.png",
+        "gt_img": "samples/ComputerScience_task_2_gt.png",
         "consistency": "Localized",
         "questions": [
           {
             "id": "Q1",
-            "question": "Is the structure depicted as a singly linked list with only forward (next) pointers and no back pointers?",
+            "question": "Is the linked list shown with nodes ordered 7 → 6 → 5 → 4 from head to tail?",
+            "score": 0.3
+          },
+          {
+            "id": "Q2",
+            "question": "Do the next pointers (arrows) point from 7 to 6, from 6 to 5, and from 5 to 4 sequentially?",
+            "score": 0.2
+          },
+          {
+            "id": "Q3",
+            "question": "Is the head of the list at node 7 (i.e., 7 is the first node in the sequence)?",
+            "score": 0.15
+          },
+          {
+            "id": "Q4",
+            "question": "Are the node values exactly {7, 6, 5, 4} with no extra or missing values?",
+            "score": 0.15
+          },
+          {
+            "id": "Q5",
+            "question": "Is the structure singly linked, meaning each node has exactly one outgoing next pointer and no backward pointers?",
+            "score": 0.1
+          },
+          {
+            "id": "Q6",
+            "question": "Does the last node 4 point to NULL (i.e., the list terminates with NULL after 4)?",
+            "score": 0.07
+          },
+          {
+            "id": "Q7",
+            "question": "Are there exactly four nodes depicted in the list?",
+            "score": 0.03
+          }
+        ]
+      },
+      "Graph Algorithms": {
+        "task_id": "ComputerScience_task_1",
+        "text": "Draw the edges of the shortest path between node A and node H in the diagram as red.",
+        "input_img": "samples/ComputerScience_task_1_input.jpg",
+        "gt_img": "samples/ComputerScience_task_1_gt.jpg",
+        "consistency": "Localized",
+        "questions": [
+          {
+            "id": "Q1",
+            "question": "Is the edge between nodes A and B colored red?",
+            "score": 0.2
+          },
+          {
+            "id": "Q2",
+            "question": "Is the edge between nodes B and D colored red?",
+            "score": 0.2
+          },
+          {
+            "id": "Q3",
+            "question": "Is the edge between nodes D and H colored red?",
+            "score": 0.2
+          },
+          {
+            "id": "Q4",
+            "question": "Do the red edges collectively form a single continuous path from A to H without gaps?",
+            "score": 0.2
+          },
+          {
+            "id": "Q5",
+            "question": "Are there no other edges colored red besides those on the shortest path A–B–D–H?",
+            "score": 0.2
+          }
+        ]
+      },
+      "Tree Structures": {
+        "task_id": "ComputerScience_task_35",
+        "text": "Starting from the given multiway search tree, perform a single B-tree style left-rotation within the left subtree.",
+        "input_img": "samples/ComputerScience_task_35_input.jpg",
+        "gt_img": "samples/ComputerScience_task_35_gt.jpg",
+        "consistency": "Localized",
+        "questions": [
+          {
+            "id": "Q1",
+            "question": "Is the root key still P after the rotation?",
+            "score": 0.08
+          },
+          {
+            "id": "Q2",
+            "question": "Does the left child of P contain the ordered keys H and L (replacing G with H)?",
+            "score": 0.18
+          },
+          {
+            "id": "Q3",
+            "question": "Is the leftmost leaf under the left child of P the set {B, G} only?",
+            "score": 0.15
+          },
+          {
+            "id": "Q4",
+            "question": "Is the middle leaf under the left child of P the single key I (i.e., H moved up)?",
+            "score": 0.15
+          },
+          {
+            "id": "Q5",
+            "question": "Is the right leaf under the left child of P the single key N?",
+            "score": 0.1
+          },
+          {
+            "id": "Q6",
+            "question": "Do all keys in the leftmost leaf {B, G} satisfy B < G < H (i.e., are they less than the parent key H as required by a B-tree)?",
+            "score": 0.1
+          },
+          {
+            "id": "Q7",
+            "question": "Does the middle leaf key I satisfy H < I < L, consistent with B-tree ordering after a left-rotation?",
+            "score": 0.12
+          },
+          {
+            "id": "Q8",
+            "question": "Is the right subtree of P unchanged (parent U with leaves QT and VXZ)?",
+            "score": 0.12
+          }
+        ]
+      },
+      "AI & Computer Vision": {
+        "task_id": "ComputerScience_task_15",
+        "text": "In the diagram, there are two lines connecting points A and B: one representing the Manhattan distance and the other representing the Euclidean distance. Please mark the line for Manhattan distance in blue and the line for Euclidean distance in yellow.",
+        "input_img": "samples/ComputerScience_task_15_input.png",
+        "gt_img": "samples/ComputerScience_task_15_gt.png",
+        "consistency": "Localized",
+        "questions": [
+          {
+            "id": "Q1",
+            "question": "Is there a blue line that connects point A to point B?",
             "score": 0.18
           },
           {
             "id": "Q2",
-            "question": "Are the data nodes labeled A, B, and C present in the list?",
-            "score": 0.12
+            "question": "Is the blue line a Manhattan path, i.e., composed only of horizontal and vertical segments (no diagonal segments)?",
+            "score": 0.22
           },
           {
             "id": "Q3",
-            "question": "From the head toward the tail, are the data nodes ordered A then B then C?",
-            "score": 0.2
+            "question": "Is there a yellow line that connects point A to point B?",
+            "score": 0.18
           },
           {
             "id": "Q4",
-            "question": "Does a head pointer point to an initial node that leads to A (i.e., the list begins at head and proceeds forward to A)?",
-            "score": 0.15
+            "question": "Is the yellow line a single straight segment (Euclidean distance) with no bends?",
+            "score": 0.22
           },
           {
             "id": "Q5",
-            "question": "Is there a forward link from node A to node B?",
-            "score": 0.12
-          },
-          {
-            "id": "Q6",
-            "question": "Is there a forward link from node B to node C?",
-            "score": 0.12
-          },
-          {
-            "id": "Q7",
-            "question": "Does node C's next pointer indicate null (e.g., shown as Λ) rather than pointing to another node?",
-            "score": 0.11
+            "question": "Are the colors assigned correctly, with the Manhattan path in blue and the Euclidean line in yellow (not swapped)?",
+            "score": 0.2
           }
         ]
       },
-      "Graph Theory": {
-        "task_id": "ComputerScience_task_7",
-        "text": "Please draw the final path of Dijkstra's algorithm starting from node 0 in the diagram, and mark both the path and the nodes in yellow.",
-        "input_img": "samples/ComputerScience_task_7_input.png",
-        "gt_img": "samples/ComputerScience_task_7_gt.png",
+      "Operating Systems": {
+        "task_id": "ComputerScience_task_32",
+        "text": "From the provided Gantt chart, interpret each labeled bar Pi as a single process whose CPU-burst equals its bar length, and assume all processes arrive at t=0. Produce the non-preemptive Longest-Job-First (LJF) schedule.",
+        "input_img": "samples/ComputerScience_task_32_input.png",
+        "gt_img": "samples/ComputerScience_task_32_gt.png",
         "consistency": "Localized",
         "questions": [
           {
             "id": "Q1",
-            "question": "Is there a single continuous path starting from node 0 that is highlighted in yellow (both edges and nodes on that path marked)?",
-            "score": 0.15
+            "question": "Is the schedule non-preemptive, with each process Pi appearing in one contiguous block?",
+            "score": 0.08
           },
           {
             "id": "Q2",
-            "question": "Is the directed edge 0→1 specifically highlighted in yellow as part of the path?",
-            "score": 0.15
+            "question": "Does the CPU stay busy from t=0 until completion (no idle gaps before t=30)?",
+            "score": 0.08
           },
           {
             "id": "Q3",
-            "question": "Is the directed edge 1→2 highlighted in yellow as part of the path?",
-            "score": 0.15
+            "question": "Is P1 executed before P2 and P3, in accordance with Longest-Job-First?",
+            "score": 0.18
           },
           {
             "id": "Q4",
-            "question": "Is the directed edge 2→5 highlighted in yellow as part of the path?",
-            "score": 0.15
+            "question": "Is the duration of P1 equal to the longest burst (24 time units)?",
+            "score": 0.16
           },
           {
             "id": "Q5",
-            "question": "Is the directed edge 5→4 (upward arrow) highlighted in yellow as part of the path?",
-            "score": 0.15
+            "question": "Are P2 and P3 scheduled only after P1 completes?",
+            "score": 0.06
           },
           {
             "id": "Q6",
-            "question": "Is the directed edge 4→6 highlighted in yellow as the final step of the path?",
-            "score": 0.15
+            "question": "Is the duration of P2 equal to 3 time units?",
+            "score": 0.08
           },
           {
             "id": "Q7",
-            "question": "Are all nodes on the path (0, 1, 2, 5, 4, 6) themselves marked in yellow?",
+            "question": "Is the duration of P3 equal to 3 time units?",
+            "score": 0.08
+          },
+          {
+            "id": "Q8",
+            "question": "Does P1 start at t=0 and end at t=24 (contiguous 24-unit block)?",
             "score": 0.1
+          },
+          {
+            "id": "Q9",
+            "question": "Does P2 start at t=24 and end at t=27 (immediately after P1)?",
+            "score": 0.09
+          },
+          {
+            "id": "Q10",
+            "question": "Does P3 start at t=27 and end at t=30 (immediately after P2)?",
+            "score": 0.09
           }
         ]
       },
-      "Deep Learning": {
-        "task_id": "ComputerScience_task_11",
-        "text": "Given the following convolutional neural network structure, please add two residual connections so that there is one residual connection between every two layers of 3x3 convolutional layers.",
-        "input_img": "samples/ComputerScience_task_11_input.png",
-        "gt_img": "samples/ComputerScience_task_11_gt.png",
-        "consistency": "Localized",
+      "Architecture & Compilers": {
+        "task_id": "ComputerScience_task_33",
+        "text": "Construct the value-number DAG of the single basic block shown in the question_the imagey performing common subexpression elimination and versioning of initial operands.",
+        "input_img": "samples/ComputerScience_task_33_input.jpg",
+        "gt_img": "samples/ComputerScience_task_33_gt.jpg",
+        "consistency": "Independence",
         "questions": [
           {
             "id": "Q1",
-            "question": "Are exactly two residual connections added to the diagram?",
+            "question": "Are the initial operands versioned as distinct leaves labeled b0, c0, and d0?",
             "score": 0.15
           },
           {
             "id": "Q2",
-            "question": "Does one residual connection span the first pair of 3x3 conv layers (i.e., across the first and second 3x3 conv blocks)?",
-            "score": 0.2
+            "question": "Is a represented by a single + operation node whose inputs are b0 and c0?",
+            "score": 0.15
           },
           {
             "id": "Q3",
-            "question": "For the first pair, does the residual originate from the signal just before the first 3x3 conv layer (after the 7x7 conv)?",
+            "question": "Is there a single − operation node computing a − d0?",
             "score": 0.15
           },
           {
             "id": "Q4",
-            "question": "For the first pair, does the residual terminate at the output of the second 3x3 conv layer?",
-            "score": 0.15
+            "question": "Do both b and d map to the same value-number (the result of a − d0), indicating common subexpression elimination?",
+            "score": 0.25
           },
           {
             "id": "Q5",
-            "question": "Does the second residual connection span the third and fourth 3x3 conv layers (i.e., across that consecutive pair)?",
+            "question": "Is c represented by a + operation node whose inputs are the value-number of (a − d0) and c0?",
             "score": 0.2
           },
           {
             "id": "Q6",
-            "question": "Are the residual connections only between 3x3 conv layers and not attached to non-3x3 layers such as the fc 1000 block?",
-            "score": 0.15
+            "question": "Are the operator types associated with each computed variable correct (a via +, b/d via −, c via +)?",
+            "score": 0.06
+          },
+          {
+            "id": "Q7",
+            "question": "Are all edges directed from operands to the operation nodes (leaf versions to a, a and d0 to b/d, and c0 plus b/d to c), with no cycles shown?",
+            "score": 0.04
           }
         ]
       }
@@ -878,87 +1047,9 @@
     "icon": "📊",
     "order": 5,
     "taxonomies": {
-      "Supply & Demand": {
-        "task_id": "eco_task_12",
-        "text": "A legal minimum price is introduced above the going price. Show this policy on the diagram and label it ‘Floor’.",
-        "input_img": "samples/eco_task_12_input.png",
-        "gt_img": "samples/eco_task_12_gt.png",
-        "consistency": "Localized",
-        "questions": [
-          {
-            "id": "Q1",
-            "question": "Is a horizontal line added to represent a fixed price level policy across the diagram?",
-            "score": 0.25
-          },
-          {
-            "id": "Q2",
-            "question": "Is this horizontal line positioned at a price level above the going price (the demand–supply intersection)?",
-            "score": 0.45
-          },
-          {
-            "id": "Q3",
-            "question": "Is the added line explicitly labeled with the exact text “Floor”?",
-            "score": 0.2
-          },
-          {
-            "id": "Q4",
-            "question": "Is the “Floor” label placed adjacent to the horizontal line representing the policy (not elsewhere on the chart)?",
-            "score": 0.1
-          }
-        ]
-      },
-      "Macro": {
-        "task_id": "eco_task_48",
-        "text": "The saving rate rises persistently. Illustrate the implied long-run effect on the steady state in a Solow-style schematic.",
-        "input_img": "samples/eco_task_48_input.png",
-        "gt_img": "samples/eco_task_48_gt.png",
-        "consistency": "Localized",
-        "questions": [
-          {
-            "id": "Q1",
-            "question": "Does the figure use a Solow-style layout with k on the horizontal axis and y on the vertical axis?",
-            "score": 0.08
-          },
-          {
-            "id": "Q2",
-            "question": "Is a concave production function f(k) drawn from the origin (diminishing marginal returns)?",
-            "score": 0.12
-          },
-          {
-            "id": "Q3",
-            "question": "Is a straight depreciation schedule δk drawn as a line through the origin with positive slope?",
-            "score": 0.12
-          },
-          {
-            "id": "Q4",
-            "question": "Is the pre-change saving schedule s0·f(k) shown as a scaled version of f(k) that lies below f(k) for k>0?",
-            "score": 0.1
-          },
-          {
-            "id": "Q5",
-            "question": "Is a higher saving schedule s1·f(k) shown that lies strictly above s0·f(k) for k>0 (persistent rise in s)?",
-            "score": 0.2
-          },
-          {
-            "id": "Q6",
-            "question": "Are f(k) and δk unchanged between the pre- and post-change scenarios (only the saving curve shifts)?",
-            "score": 0.1
-          },
-          {
-            "id": "Q7",
-            "question": "Does the new steady state capital k* (intersection of s1·f(k) and δk) lie to the right of the old steady state?",
-            "score": 0.18
-          },
-          {
-            "id": "Q8",
-            "question": "Is the steady-state output/investment level at the new k* higher than at the old steady state (vertical ordinate larger)?",
-            "score": 0.1
-          }
-        ]
-      },
       "Consumer Choice": {
         "task_id": "eco_task_50",
-        "text": "A household receives a permanent income boost. Illustrate the new budget set and keep two indifference curves.",
+        "text": "A household receives a permanent income boost. Illustrate the new budget set and keep two indifference curves. Draw the new curve with a clearly distinct line style, update the legend, and keep the existing curve(s) and other elements unchanged.",
         "input_img": "samples/eco_task_50_input.png",
         "gt_img": "samples/eco_task_50_gt.png",
         "consistency": "Localized",
@@ -990,9 +1081,43 @@
           }
         ]
       },
+      "Macro": {
+        "task_id": "eco_task_42",
+        "text": "Government purchases rise unexpectedly. Show the new goods-market equilibrium in the 45° diagram. Draw the new curve with a clearly distinct line style, update the legend, and keep the existing curve(s) and other elements unchanged.",
+        "input_img": "samples/eco_task_42_input.png",
+        "gt_img": "samples/eco_task_42_gt.png",
+        "consistency": "Localized",
+        "questions": [
+          {
+            "id": "Q1",
+            "question": "Does the diagram include the 45-degree line (AE equals Y) required for a Keynesian Cross?",
+            "score": 0.1
+          },
+          {
+            "id": "Q2",
+            "question": "Is there a new aggregate-expenditure (AE) schedule shifted upward relative to the original AE (higher intercept) with approximately the same slope?",
+            "score": 0.3
+          },
+          {
+            "id": "Q3",
+            "question": "Is the new goods-market equilibrium shown at the intersection of the new AE schedule and the 45-degree line?",
+            "score": 0.3
+          },
+          {
+            "id": "Q4",
+            "question": "Is the new equilibrium income Y higher than the initial equilibrium income (rightward shift along the 45-degree line)?",
+            "score": 0.2
+          },
+          {
+            "id": "Q5",
+            "question": "Is the new equilibrium explicitly indicated (e.g., with a point or label distinct from the initial equilibrium)?",
+            "score": 0.1
+          }
+        ]
+      },
       "Labor": {
         "task_id": "eco_task_56",
-        "text": "Labor becomes relatively more expensive. Show the implied change in the firm’s cost line.",
+        "text": "Labor becomes relatively more expensive. Show the implied change in the firm’s cost line. Draw the new curve with a clearly distinct line style, update the legend, and keep the existing curve(s) and other elements unchanged.",
         "input_img": "samples/eco_task_56_input.png",
         "gt_img": "samples/eco_task_56_gt.png",
         "consistency": "Localized",
@@ -1024,72 +1149,9 @@
           }
         ]
       },
-      "Costs & Production": {
-        "task_id": "eco_task_58",
-        "text": "A rise in overhead expenses occurs with no change in variable technology. Reflect this on SR cost curves.",
-        "input_img": "samples/eco_task_58_input.png",
-        "gt_img": "samples/eco_task_58_gt.png",
-        "consistency": "Localized",
-        "questions": [
-          {
-            "id": "Q1",
-            "question": "Is an additional ATC curve included to represent the higher overhead (fixed) costs?",
-            "score": 0.15
-          },
-          {
-            "id": "Q2",
-            "question": "Does the new ATC curve lie strictly above the original ATC curve for all positive q?",
-            "score": 0.25
-          },
-          {
-            "id": "Q3",
-            "question": "Does the vertical gap between the new ATC and the original ATC decrease as q increases (consistent with added fixed cost being spread over more output)?",
-            "score": 0.25
-          },
-          {
-            "id": "Q4",
-            "question": "Is the AVC curve unchanged relative to the original (same shape/position), reflecting no change in variable technology?",
-            "score": 0.2
-          },
-          {
-            "id": "Q5",
-            "question": "Is the MC curve unchanged relative to the original (same shape/position), reflecting no change in variable technology?",
-            "score": 0.15
-          }
-        ]
-      },
-      "Market Power & IO": {
-        "task_id": "eco_task_68",
-        "text": "A unit tax is imposed on the monopolist’s output. Depict the implied change in its decision diagram.",
-        "input_img": "samples/eco_task_68_input.png",
-        "gt_img": "samples/eco_task_68_gt.png",
-        "consistency": "Localized",
-        "questions": [
-          {
-            "id": "Q1",
-            "question": "Does the diagram include a new post-tax marginal cost curve that lies strictly above the original marginal cost curve for all quantities Q?",
-            "score": 0.4
-          },
-          {
-            "id": "Q2",
-            "question": "Is the post-tax marginal cost curve a parallel upward shift of the original marginal cost curve (i.e., same slope across Q), as implied by a per-unit tax?",
-            "score": 0.3
-          },
-          {
-            "id": "Q3",
-            "question": "Is the demand curve unchanged in position (no shift) after the tax is imposed?",
-            "score": 0.15
-          },
-          {
-            "id": "Q4",
-            "question": "Is the marginal revenue curve unchanged in position (no shift) after the tax is imposed?",
-            "score": 0.15
-          }
-        ]
-      },
       "Public Economics": {
         "task_id": "eco_task_100",
-        "text": "Evasion or erosion reduces the effective base. Show a lower Laffer schedule.",
+        "text": "Evasion or erosion reduces the effective base. Show a lower Laffer schedule. Draw the new curve with a clearly distinct line style, update the legend, and keep the existing curve(s) and other elements unchanged.",
         "input_img": "samples/eco_task_100_input.png",
         "gt_img": "samples/eco_task_100_gt.png",
         "consistency": "Localized",
@@ -1118,7 +1180,7 @@
       },
       "Finance": {
         "task_id": "eco_task_130",
-        "text": "Better diversification opportunities. Show a superior frontier.",
+        "text": "Better diversification opportunities. Show a superior frontier. Draw the new curve with a clearly distinct line style, update the legend, and keep the existing curve(s) and other elements unchanged.",
         "input_img": "samples/eco_task_130_input.png",
         "gt_img": "samples/eco_task_130_gt.png",
         "consistency": "Localized",
@@ -1144,6 +1206,40 @@
             "score": 0.1
           }
         ]
+      },
+      "Market Power & IO": {
+        "task_id": "eco_task_146",
+        "text": "Cost shock hits firm 1. Show the new reactions. Draw the new curve with a clearly distinct line style, update the legend, and keep the existing curve(s) and other elements unchanged.",
+        "input_img": "samples/eco_task_146_input.png",
+        "gt_img": "samples/eco_task_146_gt.png",
+        "consistency": "Localized",
+        "questions": [
+          {
+            "id": "Q1",
+            "question": "Is a new reaction curve for firm 1 shown in addition to its original curve?",
+            "score": 0.15
+          },
+          {
+            "id": "Q2",
+            "question": "For any given q2, does the new reaction of firm 1 prescribe a smaller q1 than the original (i.e., it is shifted inward)?",
+            "score": 0.45
+          },
+          {
+            "id": "Q3",
+            "question": "Is the new reaction curve of firm 1 downward sloping?",
+            "score": 0.1
+          },
+          {
+            "id": "Q4",
+            "question": "Is a new reaction curve for firm 2 shown (to indicate post-shock reactions)?",
+            "score": 0.2
+          },
+          {
+            "id": "Q5",
+            "question": "Does firm 2’s new reaction coincide with its original reaction (no shift due to a shock only to firm 1)?",
+            "score": 0.1
+          }
+        ]
       }
     }
   },
@@ -1152,37 +1248,125 @@
     "icon": "📜",
     "order": 6,
     "taxonomies": {
-      "History": {
-        "task_id": "his_task_2",
-        "text": "Add the names of two dynasties in eastern China on the map.",
-        "input_img": "samples/his_task_2_input.jpeg",
-        "gt_img": "samples/his_task_2_gt.png",
+      "Administrative Labeling": {
+        "task_id": "his_task_1",
+        "text": "Add the correct pivotal kingdom name for Ancient Korea inside the red-highlighted region. Match the map’s existing label style exactly.",
+        "input_img": "samples/his_task_1_input.jpeg",
+        "gt_img": "samples/his_task_1_gt.png",
         "consistency": "Localized",
         "questions": [
           {
             "id": "Q1",
-            "question": "Does the map show exactly two dynasty-name labels placed in eastern China?",
-            "score": 0.2
+            "question": "Does the added label text read exactly \"Goguryeo\"?",
+            "score": 0.35
           },
           {
             "id": "Q2",
-            "question": "Do both added labels explicitly include the word \"Dynasty\" to indicate dynastic entities?",
-            "score": 0.2
+            "question": "Is the \"Goguryeo\" label placed entirely within the red-highlighted region (not overlapping sea or other colored regions)?",
+            "score": 0.25
           },
           {
             "id": "Q3",
-            "question": "Are both labels positioned on the Chinese mainland (not on Korea, Japan, Mongolia, or the ocean)?",
-            "score": 0.2
+            "question": "Does the \"Goguryeo\" label use the same font family/weight as the existing kingdom labels (e.g., \"Baekje\", \"Silla\", \"Gaya\")?",
+            "score": 0.15
           },
           {
             "id": "Q4",
-            "question": "Are the labels located in the eastern portion of China (toward the Pacific coast rather than western regions like Tibet/Xinjiang)?",
-            "score": 0.2
+            "question": "Is the \"Goguryeo\" label color consistent with the other kingdom labels (black/dark text)?",
+            "score": 0.1
           },
           {
             "id": "Q5",
-            "question": "Are the two dynasty names different from each other (not identical)?",
-            "score": 0.2
+            "question": "Is the font size of \"Goguryeo\" comparable to the sizes of the other kingdom labels on the map?",
+            "score": 0.1
+          },
+          {
+            "id": "Q6",
+            "question": "Was only one new label added (no extra or duplicate labels outside the red region)?",
+            "score": 0.05
+          }
+        ]
+      },
+      "Route Mapping": {
+        "task_id": "his_task_6",
+        "text": "Draw the route of Zhang Qian's missions to the Western Regions.",
+        "input_img": "samples/his_task_6_input.jpeg",
+        "gt_img": "samples/his_task_6_gt.png",
+        "consistency": "Localized",
+        "questions": [
+          {
+            "id": "Q1",
+            "question": "Is a continuous travel route with directional arrows drawn across the map?",
+            "score": 0.1
+          },
+          {
+            "id": "Q2",
+            "question": "Does the route originate at the city labeled \"长安\"?",
+            "score": 0.15
+          },
+          {
+            "id": "Q3",
+            "question": "Does the route proceed westward passing by the label \"祁连山\"?",
+            "score": 0.09
+          },
+          {
+            "id": "Q4",
+            "question": "Does the route pass through the location labeled \"楼兰\"?",
+            "score": 0.11
+          },
+          {
+            "id": "Q5",
+            "question": "Does the route pass through the area labeled \"北龟兹\"?",
+            "score": 0.11
+          },
+          {
+            "id": "Q6",
+            "question": "Does the route reach the state labeled \"大宛\"?",
+            "score": 0.11
+          },
+          {
+            "id": "Q7",
+            "question": "Does the route reach the state labeled \"大月氏\"?",
+            "score": 0.14
+          },
+          {
+            "id": "Q8",
+            "question": "Does the route include the state labeled \"大夏\"?",
+            "score": 0.09
+          },
+          {
+            "id": "Q9",
+            "question": "Is a return leg drawn from the Western Regions back to \"长安\"?",
+            "score": 0.1
+          }
+        ]
+      },
+      "Timeline Alignment": {
+        "task_id": "his_task_9",
+        "text": "At the single red time point with missing information, supplement the correct historical event and its corresponding time using text only. Keep all other elements unchanged.",
+        "input_img": "samples/his_task_9_input.jpeg",
+        "gt_img": "samples/his_task_9_gt.png",
+        "consistency": "Localized",
+        "questions": [
+          {
+            "question": "Is the previously unlabeled single red time point now annotated with a text label?",
+            "id": "Q1",
+            "score": 0.1
+          },
+          {
+            "question": "Does the added label state that the Hittites and Egyptians signed the Egypto-Hittite peace treaty (semantic equivalents acceptable)?",
+            "id": "Q2",
+            "score": 0.4
+          },
+          {
+            "question": "Does the added label indicate that the date of this event falls within the range of 1260 BCE to 1258 BCE?",
+            "id": "Q3",
+            "score": 0.4
+          },
+          {
+            "question": "Was only text added (no new images or graphical elements) to supplement the missing information?",
+            "id": "Q4",
+            "score": 0.1
           }
         ]
       }
@@ -1194,80 +1378,80 @@
     "order": 7,
     "taxonomies": {
       "Earth Geometry": {
-        "task_id": "geography_task_1",
-        "text": "Draw the International Date Line with a red line in the figure.",
-        "input_img": "samples/geography_task_1_input.png",
-        "gt_img": "samples/geography_task_1_gt.png",
-        "consistency": "Localized",
+        "task_id": "geography_task_33",
+        "text": "Construct a longitudinal rail profile from the tabular data. Use the table in the question image to plot three vertices A, B, and C on a 2D plane where the horizontal coordinate is the distance (in chains) and the vertical coordinate is the rail level (in meters).",
+        "input_img": "samples/geography_task_33_input.png",
+        "gt_img": "samples/geography_task_33_gt.png",
+        "consistency": "Independence",
         "questions": [
           {
             "id": "Q1",
-            "question": "Is a red line added to represent the International Date Line?",
-            "score": 0.15
+            "question": "Is point A plotted at horizontal distance 2040 (chains) and vertical rail level 118 (meters)?",
+            "score": 0.25
           },
           {
             "id": "Q2",
-            "question": "Does the red line run primarily north–south near the 180° meridian column shown as the 'International Date Line' on the map?",
-            "score": 0.15
+            "question": "Is point B plotted at horizontal distance 2100 (chains) and vertical rail level 134 (meters)?",
+            "score": 0.25
           },
           {
             "id": "Q3",
-            "question": "Does the red line extend continuously from the top (near Arctic Ocean) to the bottom of the map?",
-            "score": 0.15
+            "question": "Is point C plotted at horizontal distance 2180 (chains) and vertical rail level 140 (meters)?",
+            "score": 0.25
           },
           {
             "id": "Q4",
-            "question": "Near the Bering Sea/Aleutian Is., does the red line jog eastward before resuming its southward course (i.e., it does not pass through mainland Siberia or Alaska)?",
-            "score": 0.15
+            "question": "Are the vertices connected by straight line segments A–B and B–C to form the longitudinal profile?",
+            "score": 0.14
           },
           {
             "id": "Q5",
-            "question": "Around Kiribati, does the red line deviate markedly eastward from the 180° meridian before returning westward further south?",
-            "score": 0.2
-          },
-          {
-            "id": "Q6",
-            "question": "In the Samoa Is. / Cook Is. / Chatham Is. region, does the red line include a westward jog relative to the 180° meridian before continuing south?",
-            "score": 0.15
-          },
-          {
-            "id": "Q7",
-            "question": "Does the red line avoid crossing major landmasses (e.g., Alaska, Siberia, New Zealand), staying over the ocean?",
-            "score": 0.05
+            "question": "Are the plotted vertices labeled with their identifiers A, B, and C near the points?",
+            "score": 0.11
           }
         ]
       },
       "Ocean & Hydrology": {
-        "task_id": "geography_task_2",
-        "text": "Draw the currents in the Pacific Ocean in the figure to show their basic rotary pattern.",
-        "input_img": "samples/geography_task_2_input.png",
-        "gt_img": "samples/geography_task_2_gt.png",
-        "consistency": "Localized",
+        "task_id": "geography_task_37",
+        "text": "Karst evolution edit. Starting from the question image, convert the diagram from an early karst stage with a shallow stream to a later stage with lowered base level and enhanced dissolution.The final edited image should depict a mature karst with sinkholes, a continuous cavern along the dissolution horizon, and rapid stream down‑cutting.",
+        "input_img": "samples/geography_task_37_input.png",
+        "gt_img": "samples/geography_task_37_gt.png",
+        "consistency": "Style",
         "questions": [
           {
             "id": "Q1",
-            "question": "Are current arrows added within the Pacific Ocean (not drawn over land) to indicate flow?",
-            "score": 0.1
-          },
-          {
-            "id": "Q2",
-            "question": "Do the arrows in the North Pacific collectively form a closed clockwise rotational pattern?",
-            "score": 0.3
-          },
-          {
-            "id": "Q3",
-            "question": "Do the arrows in the South Pacific collectively form a closed counterclockwise rotational pattern?",
-            "score": 0.3
-          },
-          {
-            "id": "Q4",
-            "question": "Is the clockwise gyre located north of the Equator and the counterclockwise gyre located south of the Equator?",
+            "question": "Are multiple sinkholes depicted on the land surface across the scene?",
             "score": 0.2
           },
           {
+            "id": "Q2",
+            "question": "Is there a laterally continuous cavern/conduit drawn along the dissolution horizon rather than isolated voids?",
+            "score": 0.2
+          },
+          {
+            "id": "Q3",
+            "question": "Is the stream shown as deeply incised with an indication of rapid down‑cutting (e.g., a narrow pit or vertical flow arrow)?",
+            "score": 0.18
+          },
+          {
+            "id": "Q4",
+            "question": "Is the base level (water table) drawn lower than in the early stage, i.e., positioned deeper relative to the surface and stream?",
+            "score": 0.16
+          },
+          {
             "id": "Q5",
-            "question": "Do both rotary patterns span most of the basin from near the western Pacific boundary to near the eastern Pacific boundary, indicating basin-scale gyres?",
-            "score": 0.1
+            "question": "Do groundwater flow paths converge into the lowered stream and the cavern system, consistent with mature karst drainage?",
+            "score": 0.12
+          },
+          {
+            "id": "Q6",
+            "question": "Are increased vertical percolation paths from the surface to the dissolution horizon shown to indicate enhanced dissolution?",
+            "score": 0.08
+          },
+          {
+            "id": "Q7",
+            "question": "Does the overall scene depict a later/mature karst stage rather than an early stage with a shallow stream?",
+            "score": 0.06
           }
         ]
       },
@@ -1311,51 +1495,26 @@
         ]
       },
       "Lithosphere & Pedosphere": {
-        "task_id": "geography_task_29",
-        "text": "Add labels to the structural components of the shield volcano in the diagram.",
-        "input_img": "samples/geography_task_29_input.png",
-        "gt_img": "samples/geography_task_29_gt.png",
+        "task_id": "geography_task_27",
+        "text": "Add the movement direction of the Pacific plate relative to the North American plate to the diagram.",
+        "input_img": "samples/geography_task_27_input.png",
+        "gt_img": "samples/geography_task_27_gt.png",
         "consistency": "Localized",
         "questions": [
           {
-            "question": "Is the label 'Summit caldera' present in the diagram?",
             "id": "Q1",
-            "score": 0.06
+            "question": "Is a new directional arrow added to indicate plate-motion direction?",
+            "score": 0.2
           },
           {
-            "question": "Does the 'Summit caldera' label (or leader) point to the crater/depression at the volcano’s summit?",
             "id": "Q2",
-            "score": 0.19
+            "question": "Is the added motion arrow placed over the region labeled PACIFIC PLATE (off the U.S. West Coast)?",
+            "score": 0.3
           },
           {
-            "question": "Is the label 'Central vent' present in the diagram?",
             "id": "Q3",
-            "score": 0.06
-          },
-          {
-            "question": "Does the 'Central vent' label point to the main vertical conduit beneath the summit?",
-            "id": "Q4",
-            "score": 0.19
-          },
-          {
-            "question": "Is the label 'Flank eruption' present in the diagram?",
-            "id": "Q5",
-            "score": 0.06
-          },
-          {
-            "question": "Does the 'Flank eruption' label point to a lateral branch or opening on the volcano’s flank?",
-            "id": "Q6",
-            "score": 0.19
-          },
-          {
-            "question": "Is the label 'Magma reservoir' present in the diagram?",
-            "id": "Q7",
-            "score": 0.06
-          },
-          {
-            "question": "Does the 'Magma reservoir' label point to the large subsurface magma chamber at the base of the system?",
-            "id": "Q8",
-            "score": 0.19
+            "question": "Does the motion arrow point northwest (upper-left), indicating the Pacific Plate’s movement relative to the North American Plate?",
+            "score": 0.5
           }
         ]
       }
@@ -1543,7 +1702,7 @@
           },
           {
             "id": "Q6",
-            "question": "Is there no red highlighting on lower-body muscles such as glutes, quadriceps, or calves?",
+            "question": "Is there no red highlighting on non-primary muscles involved in the movement such as glutes, arms, or calves?",
             "score": 0.05
           },
           {
@@ -1554,30 +1713,30 @@
         ]
       },
       "Sports Tactic": {
-        "task_id": "sports_task_13",
-        "text": "Draw the movement of Player2 when playing Exit tactic in basketball.",
-        "input_img": "samples/sports_task_13_input.png",
-        "gt_img": "samples/sports_task_13_gt.png",
+        "task_id": "sports_task_16",
+        "text": "Draw the movement of players when playing Middle 1–2 Attack Combination in volleyball.",
+        "input_img": "samples/sports_task_16_input.png",
+        "gt_img": "samples/sports_task_16_gt.png",
         "consistency": "Localized",
         "questions": [
           {
             "id": "Q1",
-            "question": "Is a movement path/arrow drawn specifically for Player 2?",
+            "question": "Are movement paths indicated with arrows to show player motion on the court?",
             "score": 0.15
           },
           {
             "id": "Q2",
-            "question": "Does Player 2’s movement start from his initial position near the rim/paint area?",
-            "score": 0.25
+            "question": "Are exactly two movement arrows drawn to represent the 1–2 attack combination?",
+            "score": 0.3
           },
           {
             "id": "Q3",
-            "question": "Does Player 2’s movement end toward the left corner on the perimeter, outside the three-point line?",
-            "score": 0.35
+            "question": "Is there movement arrows for both wing attackers (left and right) that show an approach for a higher tempo outside attack?",
+            "score": 0.3
           },
           {
             "id": "Q4",
-            "question": "Is the direction of Player 2’s movement leftward away from the basket (a baseline/outward cut rather than toward the hoop)?",
+            "question": " Are the movements of both wing attackers (left and right) shown as two distinct, simultaneous attacking routes from different starting positions?",
             "score": 0.25
           }
         ]
@@ -1585,8 +1744,8 @@
       "Sports Nutrition": {
         "task_id": "sports_task_27",
         "text": "Based on the nutrition distribution diagram for normal training intensity, redraw the nutrition distribution for a low-intensity training scenario.",
-        "input_img": "samples/sports_task_27_input.png",
-        "gt_img": "samples/sports_task_27_gt.png",
+        "input_img": "samples/sports_task_27_input.jpg",
+        "gt_img": "samples/sports_task_27_gt.jpg",
         "consistency": "Style",
         "questions": [
           {
@@ -1672,35 +1831,30 @@
       },
       "Board (Go)": {
         "task_id": "board_games_task_6",
-        "text": "Edit the go diagram to show the Standard Chinese Fuseki",
+        "text": "A Tesuji problem. Black to play. Black must rescue the two stones. Please find the crucial first move and mark it with \"1\" on the board.",
         "input_img": "samples/board_games_task_6_input.png",
         "gt_img": "samples/board_games_task_6_gt.png",
         "consistency": "Localized",
         "questions": [
           {
             "id": "Q1",
-            "question": "Is the diagram on a standard 19×19 Go board grid?",
-            "score": 0.1
+            "question": "Is there exactly one move marker labeled \"1\" added to the board?",
+            "score": 0.15
           },
           {
             "id": "Q2",
-            "question": "Is there a black stone on the upper-right hoshi point (the 4-4 point from the top-right corner)?",
-            "score": 0.22
+            "question": "Is the move marked with \"1\" placed at the intersection Q18?",
+            "score": 0.55
           },
           {
             "id": "Q3",
-            "question": "Is there a black stone on the lower-right hoshi point (the 4-4 point from the bottom-right corner)?",
-            "score": 0.22
+            "question": "Is the stone at Q18 shown as a black stone (indicating Black's first move)?",
+            "score": 0.2
           },
           {
             "id": "Q4",
-            "question": "Is there a black side stone placed on the right side between those two right-corner hoshi stones on the fourth line from the edge (the small Chinese position, not adjacent to either corner)?",
-            "score": 0.26
-          },
-          {
-            "id": "Q5",
-            "question": "Are there white stones occupying the two left-side corner hoshi points (upper-left and lower-left 4-4 points)?",
-            "score": 0.2
+            "question": "Is the numeral \"1\" clearly on the black stone at Q18, not elsewhere on the board?",
+            "score": 0.1
           }
         ]
       },

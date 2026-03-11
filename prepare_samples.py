@@ -11,9 +11,8 @@ DATA_DIR = os.path.join(BASE_DIR, "data")
 os.makedirs(SAMPLES_DIR, exist_ok=True)
 os.makedirs(DATA_DIR, exist_ok=True)
 
-# Data sources
-SUBSET_JSON = "/mnt/nas-new/home/yangxue/lmx/image/subset/data.json"
-SIMPLE_JSON = "/mnt/nas-new/home/yangxue/lmx/image/simple_instruction/data.json"
+# Data source
+RESULT_JSON = "/mnt/nas-new/home/yangxue/lmx/image/json_data/v1/subset/bagel/result.json"
 
 # Consistency display mapping
 CONSISTENCY_MAP = {
@@ -22,62 +21,69 @@ CONSISTENCY_MAP = {
     "none": "Independence",
 }
 
-# Selected samples: (data_source, index, discipline, display_taxonomy)
+# Selected samples: (task_id, discipline, display_taxonomy)
+# One sample per sub_task (taxonomy), picked from result.json
 SAMPLES = [
-    # Mathematics
-    (SUBSET_JSON, 0, "Mathematics", "2D Geometry"),
-    (SUBSET_JSON, 16, "Mathematics", "3D Geometry"),
-    (SUBSET_JSON, 26, "Mathematics", "Functions"),
-    (SUBSET_JSON, 34, "Mathematics", "Statistics"),
-    (SUBSET_JSON, 36, "Mathematics", "Graph Theory"),
+    # Mathematics (sub_task -> display name)
+    ("math_math_3",      "Mathematics", "2D Geometry"),
+    ("math_math_69",     "Mathematics", "3D Geometry"),
+    ("math_math_99",     "Mathematics", "Functions"),
+    ("math_static_5",    "Mathematics", "Statistics"),
+    ("math_math_122",    "Mathematics", "Graph Theory"),
     # Physics
-    (SUBSET_JSON, 82, "Physics", "Mechanics"),
-    (SUBSET_JSON, 84, "Physics", "Optics"),
-    (SUBSET_JSON, 87, "Physics", "Electromagnetism"),
-    (SUBSET_JSON, 88, "Physics", "Thermodynamics"),
-    (SUBSET_JSON, 94, "Physics", "Engineering Drawing"),
+    ("physics_task_56",  "Physics", "Mechanics"),
+    ("physics_task_14",  "Physics", "Optics"),
+    ("physics_task_33",  "Physics", "Electromagnetism"),
+    ("physics_task_45",  "Physics", "Thermodynamics"),
+    ("engineering_task_7","Physics", "Engineering Drawing"),
     # Chemistry
-    (SUBSET_JSON, 68, "Chemistry", "GHS Pictogram"),
-    (SUBSET_JSON, 69, "Chemistry", "Laboratory Techniques"),
-    (SUBSET_JSON, 70, "Chemistry", "Structural Transformation"),
-    (SUBSET_JSON, 71, "Chemistry", "Gas Laws"),
+    ("chemistry_task_8",  "Chemistry", "Atomic Periodic"),
+    ("chemistry_task_4",  "Chemistry", "Inorganic Lab"),
+    ("chemistry_task_64", "Chemistry", "Organic Structure"),
+    ("chemistry_task_66", "Chemistry", "Organic Mechanism"),
+    ("chemistry_task_24", "Chemistry", "Physical Chemistry"),
+    ("chemistry_task_87", "Chemistry", "Organic Redox"),
+    ("chemistry_task_2",  "Chemistry", "Organic Acid"),
     # Biology
-    (SUBSET_JSON, 96, "Biology", "Food Chain & Energy Flow"),
-    (SUBSET_JSON, 97, "Biology", "Cellular Metabolism"),
-    (SUBSET_JSON, 98, "Biology", "Endocytosis & Exocytosis"),
-    (SUBSET_JSON, 99, "Biology", "Central Dogma"),
+    ("biology_task_22",  "Biology", "Ecology"),
+    ("biology_task_34",  "Biology", "Cell Biology"),
+    ("biology_task_18",  "Biology", "Human Physiology"),
+    ("biology_task_38",  "Biology", "Molecular Biology"),
     # Computer Science
-    (SUBSET_JSON, 114, "Computer Science", "Singly Linked List"),
-    (SUBSET_JSON, 115, "Computer Science", "Graph Theory"),
-    (SUBSET_JSON, 116, "Computer Science", "Deep Learning"),
+    ("ComputerScience_task_2",  "Computer Science", "Linear Structures"),
+    ("ComputerScience_task_1",  "Computer Science", "Graph Algorithms"),
+    ("ComputerScience_task_35", "Computer Science", "Tree Structures"),
+    ("ComputerScience_task_15", "Computer Science", "AI & Computer Vision"),
+    ("ComputerScience_task_32", "Computer Science", "Operating Systems"),
+    ("ComputerScience_task_33", "Computer Science", "Architecture & Compilers"),
     # Economics
-    (SUBSET_JSON, 38, "Economics", "Supply & Demand"),
-    (SUBSET_JSON, 39, "Economics", "Macro"),
-    (SUBSET_JSON, 40, "Economics", "Consumer Choice"),
-    (SUBSET_JSON, 41, "Economics", "Labor"),
-    (SUBSET_JSON, 42, "Economics", "Costs & Production"),
-    (SUBSET_JSON, 45, "Economics", "Market Power & IO"),
-    (SUBSET_JSON, 46, "Economics", "Public Economics"),
-    (SUBSET_JSON, 50, "Economics", "Finance"),
+    ("eco_task_50",  "Economics", "Consumer Choice"),
+    ("eco_task_42",  "Economics", "Macro"),
+    ("eco_task_56",  "Economics", "Labor"),
+    ("eco_task_100", "Economics", "Public Economics"),
+    ("eco_task_130", "Economics", "Finance"),
+    ("eco_task_146", "Economics", "Market Power & IO"),
     # History
-    (SUBSET_JSON, 54, "History", "History"),
+    ("his_task_1",  "History", "Administrative Labeling"),
+    ("his_task_6",  "History", "Route Mapping"),
+    ("his_task_9",  "History", "Timeline Alignment"),
     # Geography
-    (SUBSET_JSON, 60, "Geography", "Earth Geometry"),
-    (SUBSET_JSON, 61, "Geography", "Ocean & Hydrology"),
-    (SUBSET_JSON, 62, "Geography", "Atmosphere & Climate"),
-    (SUBSET_JSON, 65, "Geography", "Lithosphere & Pedosphere"),
-    # Music (from simple_instruction/data.json - need to find by task_id)
-    (SIMPLE_JSON, "music_task_4", "Music", "Pitch & Transposition"),
-    (SIMPLE_JSON, "music_task_10", "Music", "Performance Markings"),
-    (SIMPLE_JSON, "music_task_21", "Music", "Rhythm & Meter"),
-    (SIMPLE_JSON, "music_task_45", "Music", "Harmony & Theory"),
+    ("geography_task_33", "Geography", "Earth Geometry"),
+    ("geography_task_37", "Geography", "Ocean & Hydrology"),
+    ("geography_task_4",  "Geography", "Atmosphere & Climate"),
+    ("geography_task_27", "Geography", "Lithosphere & Pedosphere"),
+    # Music
+    ("music_task_4",  "Music", "Pitch & Transposition"),
+    ("music_task_10", "Music", "Performance Markings"),
+    ("music_task_21", "Music", "Rhythm & Meter"),
+    ("music_task_45", "Music", "Harmony & Theory"),
     # Sports
-    (SUBSET_JSON, 106, "Sports", "Sports Anatomy"),
-    (SUBSET_JSON, 108, "Sports", "Sports Tactic"),
-    (SUBSET_JSON, 110, "Sports", "Sports Nutrition"),
-    (SUBSET_JSON, 111, "Sports", "Board (Chess)"),
-    (SUBSET_JSON, 112, "Sports", "Board (Go)"),
-    (SUBSET_JSON, 113, "Sports", "Board (Chinese Chess)"),
+    ("sports_task_4",       "Sports", "Sports Anatomy"),
+    ("sports_task_16",      "Sports", "Sports Tactic"),
+    ("sports_task_27",      "Sports", "Sports Nutrition"),
+    ("board_games_task_4",  "Sports", "Board (Chess)"),
+    ("board_games_task_6",  "Sports", "Board (Go)"),
+    ("board_games_task_13", "Sports", "Board (Chinese Chess)"),
 ]
 
 # Discipline order and icons
@@ -105,26 +111,27 @@ def copy_image(src_path, task_id, suffix):
 
 
 def main():
-    # Load data sources
-    data_cache = {}
-    for path in [SUBSET_JSON, SIMPLE_JSON]:
-        with open(path) as f:
-            data_cache[path] = json.load(f)
+    # Load data source
+    with open(RESULT_JSON) as f:
+        data = json.load(f)
+
+    # Index by task_id
+    task_map = {d["task_id"]: d for d in data}
+
+    # Clear old samples
+    if os.path.exists(SAMPLES_DIR):
+        shutil.rmtree(SAMPLES_DIR)
+    os.makedirs(SAMPLES_DIR, exist_ok=True)
 
     # Build output structure
     output = {}
 
-    for source, idx_or_tid, discipline, display_taxonomy in SAMPLES:
-        data_list = data_cache[source]
+    for task_id, discipline, display_taxonomy in SAMPLES:
+        if task_id not in task_map:
+            print(f"WARNING: task_id '{task_id}' not found in result.json, skipping!")
+            continue
 
-        # Get the item
-        if isinstance(idx_or_tid, int):
-            item = data_list[idx_or_tid]
-        else:
-            # Search by task_id
-            item = next(x for x in data_list if x["task_id"] == idx_or_tid)
-
-        task_id = item["task_id"]
+        item = task_map[task_id]
         input_rel = copy_image(item["image_path"], task_id, "input")
         gt_rel = copy_image(item["gt"], task_id, "gt")
 
@@ -152,8 +159,9 @@ def main():
 
     # Stats
     total_samples = sum(len(v["taxonomies"]) for v in output.values())
+    img_count = len(os.listdir(SAMPLES_DIR))
     print(f"Generated {total_samples} samples across {len(output)} disciplines")
-    print(f"Images saved to: {SAMPLES_DIR}")
+    print(f"Images: {img_count} files in {SAMPLES_DIR}")
     print(f"JSON saved to: {out_path}")
 
 

@@ -55,6 +55,28 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* ========== Hero Title Animation ========== */
+    .grade-letter {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(-30px) scale(0.7);
+      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .grade-letter.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .subtitle-word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .subtitle-word.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* ========== Scroll Animations ========== */
     .fade-in {
       opacity: 0;
@@ -819,8 +841,12 @@
       <img src="https://img.shields.io/badge/Samples-520-blue" alt="520 Samples">
       <img src="https://img.shields.io/badge/Domains-10-orange" alt="10 Domains">
     </div>
-    <h1 class="title-main">GRADE</h1>
-    <p class="subtitle-main"><b>G</b>rounded <b>R</b>easoning <b>A</b>ssessment for <b>D</b>iscipline-informed <b>E</b>diting</p>
+    <h1 class="title-main" id="hero-title">
+      <span class="grade-letter" data-index="0">G</span><span class="grade-letter" data-index="1">R</span><span class="grade-letter" data-index="2">A</span><span class="grade-letter" data-index="3">D</span><span class="grade-letter" data-index="4">E</span>
+    </h1>
+    <p class="subtitle-main" id="hero-subtitle">
+      <span class="subtitle-word" data-index="0"><b>G</b>rounded</span> <span class="subtitle-word" data-index="1"><b>R</b>easoning</span> <span class="subtitle-word" data-index="2"><b>A</b>ssessment</span> <span class="subtitle-word" data-index="3">for</span> <span class="subtitle-word" data-index="3"><b>D</b>iscipline-informed</span> <span class="subtitle-word" data-index="4"><b>E</b>diting</span>
+    </p>
     <p class="subtitle-expand">The First Benchmark for Evaluating Discipline-Informed Knowledge and Reasoning in Image Editing</p>
     <div class="hero-links">
       <a href="#"><i class="fas fa-file-pdf"></i> Paper</a>
@@ -888,11 +914,11 @@
     <div class="score-formulas mt-2">
       <div class="formula-card fade-in">
         <h5>Accuracy (Strict)</h5>
-        <code>Pass iff Reasoning &gt; 0.99<br>&amp;&amp; Consistency = 2<br>&amp;&amp; Readability = 2</code>
+        <p style="font-size:0.88rem; line-height:1.7; color:var(--text-body);">A sample is considered <b>passed</b> only when <b>all</b> reasoning questions are answered correctly, and both Visual Consistency and Logical Readability receive full marks.</p>
       </div>
       <div class="formula-card fade-in">
         <h5>Relax Score</h5>
-        <code>0.6 &times; Reasoning &times; 100<br>+ 0.3 &times; Consistency &times; 50<br>+ 0.1 &times; Readability &times; 50</code>
+        <p style="font-size:0.88rem; line-height:1.7; color:var(--text-body);">A weighted combination of three dimensions: <b>Reasoning</b> contributes 60%, <b>Consistency</b> contributes 30%, and <b>Readability</b> contributes 10%, all normalized to a 0–100 scale.</p>
       </div>
     </div>
   </div>
@@ -1041,6 +1067,29 @@
 </footer>
 
 <script>
+// ============ Hero Title Animation ============
+(function() {
+  const letters = document.querySelectorAll('.grade-letter');
+  const words = document.querySelectorAll('.subtitle-word');
+  const delay = 200; // ms between each group
+  const startDelay = 300; // initial delay
+
+  // G=0, R=1, A=2, D=3, E=4
+  // "for" shares index 3 with "Discipline-informed"
+  for (let step = 0; step <= 4; step++) {
+    setTimeout(() => {
+      // Show corresponding letter
+      letters.forEach(l => {
+        if (parseInt(l.dataset.index) === step) l.classList.add('show');
+      });
+      // Show corresponding subtitle word(s)
+      words.forEach(w => {
+        if (parseInt(w.dataset.index) === step) w.classList.add('show');
+      });
+    }, startDelay + step * delay);
+  }
+})();
+
 // ============ Scroll Animations ============
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {

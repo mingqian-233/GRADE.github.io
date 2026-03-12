@@ -295,52 +295,16 @@
       top: 120px;
       background: linear-gradient(90deg, rgba(239,68,68,0.18), rgba(239,68,68,0.06) 45%, transparent 85%);
     }
-    /* Floating discipline icons */
+    /* Floating discipline icons - JS driven */
     .logo-side .side-icon {
       position: absolute;
       font-size: 1rem;
       opacity: 0;
+      will-change: transform, opacity;
+      pointer-events: none;
     }
-    .logo-side-left .side-icon { animation: iconDriftLeft 5s ease-in-out infinite; }
-    .logo-side-right .side-icon { animation: iconDriftRight 5s ease-in-out infinite; }
-    @keyframes iconDriftLeft {
-      0%   { opacity: 0; transform: translateX(25px) scale(0.8); }
-      12%  { opacity: 0.6; transform: translateX(0) scale(1); }
-      88%  { opacity: 0.6; transform: translateX(-15px) scale(1); }
-      100% { opacity: 0; transform: translateX(-25px) scale(0.8); }
-    }
-    @keyframes iconDriftRight {
-      0%   { opacity: 0; transform: translateX(-25px) scale(0.8); }
-      12%  { opacity: 0.6; transform: translateX(0) scale(1); }
-      88%  { opacity: 0.6; transform: translateX(15px) scale(1); }
-      100% { opacity: 0; transform: translateX(25px) scale(0.8); }
-    }
-    /* Left icons - 8 icons spread across lines */
-    .logo-side-left .icon-1  { right: 8%;  top: 6px;   animation-delay: 0s;   animation-duration: 5.5s; }
-    .logo-side-left .icon-2  { right: 28%; top: 28px;  animation-delay: 0.6s; animation-duration: 5s; }
-    .logo-side-left .icon-3  { right: 50%; top: 8px;   animation-delay: 1.3s; animation-duration: 6s; }
-    .logo-side-left .icon-4  { right: 72%; top: 32px;  animation-delay: 2s;   animation-duration: 5.2s; }
-    .logo-side-left .icon-5  { right: 15%; top: 56px;  animation-delay: 0.4s; animation-duration: 5.8s; }
-    .logo-side-left .icon-6  { right: 42%; top: 58px;  animation-delay: 1.8s; animation-duration: 4.8s; }
-    .logo-side-left .icon-7  { right: 65%; top: 82px;  animation-delay: 2.6s; animation-duration: 5.4s; }
-    .logo-side-left .icon-8  { right: 88%; top: 60px;  animation-delay: 3.2s; animation-duration: 5s; }
-    .logo-side-left .icon-9  { right: 20%; top: 84px;  animation-delay: 1s;   animation-duration: 5.6s; }
-    .logo-side-left .icon-10 { right: 55%; top: 106px; animation-delay: 2.8s; animation-duration: 5.3s; }
-    /* Right icons - 8 icons spread across lines */
-    .logo-side-right .icon-1  { left: 8%;  top: 6px;   animation-delay: 0.2s; animation-duration: 5.5s; }
-    .logo-side-right .icon-2  { left: 30%; top: 30px;  animation-delay: 0.9s; animation-duration: 5s; }
-    .logo-side-right .icon-3  { left: 52%; top: 10px;  animation-delay: 1.5s; animation-duration: 6s; }
-    .logo-side-right .icon-4  { left: 75%; top: 34px;  animation-delay: 2.3s; animation-duration: 5.2s; }
-    .logo-side-right .icon-5  { left: 15%; top: 58px;  animation-delay: 0.5s; animation-duration: 5.8s; }
-    .logo-side-right .icon-6  { left: 45%; top: 56px;  animation-delay: 1.7s; animation-duration: 4.8s; }
-    .logo-side-right .icon-7  { left: 68%; top: 84px;  animation-delay: 2.4s; animation-duration: 5.4s; }
-    .logo-side-right .icon-8  { left: 90%; top: 62px;  animation-delay: 3.1s; animation-duration: 5s; }
-    .logo-side-right .icon-9  { left: 22%; top: 86px;  animation-delay: 1.2s; animation-duration: 5.6s; }
-    .logo-side-right .icon-10 { left: 58%; top: 108px; animation-delay: 2.9s; animation-duration: 5.3s; }
     @media (max-width: 640px) {
       .logo-side { height: 100px; }
-      .logo-side .icon-7, .logo-side .icon-8,
-      .logo-side .icon-9, .logo-side .icon-10 { display: none; }
       .logo-side .line-5 { display: none; }
     }
 
@@ -1108,42 +1072,22 @@
 <section class="grade-section">
   <div class="container-narrow">
     <div class="logo-divider fade-in">
-      <div class="logo-side logo-side-left">
+      <div class="logo-side logo-side-left" id="logo-side-left">
         <div class="side-line line-1"></div>
         <div class="side-line line-2"></div>
         <div class="side-line line-3"></div>
         <div class="side-line line-4"></div>
         <div class="side-line line-5"></div>
-        <span class="side-icon icon-1">📐</span>
-        <span class="side-icon icon-2">⚡</span>
-        <span class="side-icon icon-3">🧪</span>
-        <span class="side-icon icon-4">🔬</span>
-        <span class="side-icon icon-5">🧬</span>
-        <span class="side-icon icon-6">🧲</span>
-        <span class="side-icon icon-7">🔭</span>
-        <span class="side-icon icon-8">⚛️</span>
-        <span class="side-icon icon-9">📏</span>
-        <span class="side-icon icon-10">🧫</span>
       </div>
       <div class="logo-center">
         <img src="./static/images/logo_showcase.png" alt="GRADE Logo" class="showcase-logo">
       </div>
-      <div class="logo-side logo-side-right">
+      <div class="logo-side logo-side-right" id="logo-side-right">
         <div class="side-line line-1"></div>
         <div class="side-line line-2"></div>
         <div class="side-line line-3"></div>
         <div class="side-line line-4"></div>
         <div class="side-line line-5"></div>
-        <span class="side-icon icon-1">💻</span>
-        <span class="side-icon icon-2">📊</span>
-        <span class="side-icon icon-3">📜</span>
-        <span class="side-icon icon-4">🌍</span>
-        <span class="side-icon icon-5">🎵</span>
-        <span class="side-icon icon-6">⚽</span>
-        <span class="side-icon icon-7">🎨</span>
-        <span class="side-icon icon-8">♟️</span>
-        <span class="side-icon icon-9">🏛️</span>
-        <span class="side-icon icon-10">📈</span>
       </div>
     </div>
     <div class="section-header fade-in">
@@ -1566,6 +1510,100 @@ function copyCitation() {
     setTimeout(() => btn.innerHTML = '<i class="fas fa-copy"></i> Copy', 2000);
   });
 }
+
+// ============ Logo Icon River ============
+(function() {
+  const allIcons = [
+    '📐','⚡','🧪','🧬','💻','📊','📜','🌍','🎵','⚽',
+    '🔬','🧲','🔭','⚛️','📏','🧫','🎨','♟️','🏛️','📈',
+    '🔢','🌡️','💊','🎭','⚙️','🗺️','🎹','🏀','🧮','🌿'
+  ];
+
+  const leftPanel = document.getElementById('logo-side-left');
+  const rightPanel = document.getElementById('logo-side-right');
+  if (!leftPanel || !rightPanel) return;
+
+  // Rows: y positions matching the 5 lines
+  const rows = [12, 36, 64, 90, 114];
+
+  function initPanel(panel, icons, direction) {
+    const panelW = panel.offsetWidth;
+    if (panelW === 0) return;
+
+    // Track occupied slots per row to avoid collisions
+    const rowSlots = rows.map(() => []);
+
+    icons.forEach((emoji, i) => {
+      const row = i % rows.length;
+      const el = document.createElement('span');
+      el.className = 'side-icon';
+      el.textContent = emoji;
+      panel.appendChild(el);
+
+      function launch() {
+        const speed = 2.5 + Math.random() * 2.5; // 2.5s - 5s
+        const y = rows[row] + (Math.random() * 12 - 6);  // slight vertical jitter
+
+        // Random start X: 0% ~ 60% from start edge
+        const startPct = Math.random() * 0.6;
+        const startX = startPct * panelW;
+
+        el.style.top = y + 'px';
+        el.style.opacity = '0';
+
+        if (direction === 'right') {
+          el.style.left = startX + 'px';
+          el.style.right = 'auto';
+          el.style.transition = `transform ${speed}s linear, opacity 0.4s ease`;
+          el.style.transform = 'translateX(0)';
+          // Force reflow
+          void el.offsetWidth;
+          el.style.opacity = '0.55';
+          const travel = panelW - startX + 20;
+          el.style.transform = `translateX(${travel}px)`;
+        } else {
+          // Left panel: icons also go right (towards the logo center)
+          el.style.left = 'auto';
+          el.style.right = (panelW - startX) + 'px';
+          el.style.transition = `transform ${speed}s linear, opacity 0.4s ease`;
+          el.style.transform = 'translateX(0)';
+          void el.offsetWidth;
+          el.style.opacity = '0.55';
+          const travel = panelW - startX + 20;
+          el.style.transform = `translateX(-${travel}px)`;
+        }
+
+        // Fade out near the end
+        setTimeout(() => {
+          el.style.opacity = '0';
+        }, (speed - 0.4) * 1000);
+
+        // Reset and relaunch
+        setTimeout(() => {
+          el.style.transition = 'none';
+          el.style.transform = 'translateX(0)';
+          el.style.opacity = '0';
+          // Stagger re-entry
+          setTimeout(launch, 200 + Math.random() * 800);
+        }, speed * 1000);
+      }
+
+      // Stagger initial launch so icons don't all start together
+      setTimeout(launch, i * 300 + Math.random() * 500);
+    });
+  }
+
+  // Split icons between panels
+  const shuffled = [...allIcons].sort(() => Math.random() - 0.5);
+  const leftIcons = shuffled.slice(0, 15);
+  const rightIcons = shuffled.slice(15);
+
+  // Wait for layout
+  setTimeout(() => {
+    initPanel(leftPanel, leftIcons, 'left');
+    initPanel(rightPanel, rightIcons, 'right');
+  }, 300);
+})();
 
 // Init
 loadSamples();

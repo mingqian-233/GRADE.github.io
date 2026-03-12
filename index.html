@@ -235,16 +235,68 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
 
-    .showcase-logo {
-      width: 320px;
-      max-width: 60vw;
-      height: auto;
-      border-radius: var(--radius-lg);
-      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.06));
-      transition: transform 0.4s ease;
+    /* Logo Stage Animation */
+    .logo-stage {
+      position: relative;
+      display: inline-block;
+      width: 220px;
+      height: 220px;
     }
-    .showcase-logo:hover {
-      transform: scale(1.03);
+    .showcase-logo {
+      position: relative;
+      z-index: 2;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      margin-top: 20px;
+      animation: logoFloat 4s ease-in-out infinite;
+      filter: drop-shadow(0 6px 20px rgba(59,130,246,0.12));
+    }
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .logo-ring {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 210px; height: 210px;
+      margin-top: -105px; margin-left: -105px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      border-top-color: var(--accent-light);
+      border-right-color: rgba(139,92,246,0.4);
+      animation: ringRotate 6s linear infinite;
+      z-index: 1;
+    }
+    .logo-ring-2 {
+      width: 230px; height: 230px;
+      margin-top: -115px; margin-left: -115px;
+      border-top-color: rgba(245,158,11,0.35);
+      border-left-color: rgba(16,185,129,0.3);
+      border-right-color: transparent;
+      animation: ringRotateReverse 8s linear infinite;
+    }
+    @keyframes ringRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes ringRotateReverse {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
+    }
+    .logo-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 160px; height: 160px;
+      margin-top: -80px; margin-left: -80px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+      animation: glowPulse 3s ease-in-out infinite;
+      z-index: 0;
+    }
+    @keyframes glowPulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.2); opacity: 1; }
     }
 
     .badge-row {
@@ -930,7 +982,7 @@
 <!-- ============ STICKY NAVBAR ============ -->
 <nav class="topbar" id="topbar">
   <div class="topbar-inner">
-    <img src="./static/images/logo_small.png" alt="GRADE" class="topbar-logo">
+    <img src="./static/images/logo_nav.png" alt="GRADE" class="topbar-logo">
     <span class="topbar-title">GRADE</span>
     <span class="topbar-sep"></span>
     <span class="topbar-full">Grounded Reasoning Assessment for Discipline-informed Editing</span>
@@ -964,8 +1016,13 @@
 <!-- ============ LOGO + ABSTRACT ============ -->
 <section class="grade-section">
   <div class="container-narrow">
-    <div class="text-center fade-in" style="margin-bottom: 2rem;">
-      <img src="./static/images/logo.png" alt="GRADE Logo" class="showcase-logo">
+    <div class="text-center fade-in" style="margin-bottom: 2.5rem;">
+      <div class="logo-stage">
+        <div class="logo-ring"></div>
+        <div class="logo-ring logo-ring-2"></div>
+        <div class="logo-glow"></div>
+        <img src="./static/images/logo_showcase.png" alt="GRADE Logo" class="showcase-logo">
+      </div>
     </div>
     <div class="section-header fade-in">
       <span class="section-number">I</span>
